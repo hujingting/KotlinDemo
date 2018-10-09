@@ -1,15 +1,24 @@
 package com.tbs.kotlindemo
 
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
+class MainActivity : BaseActivity() {
 
-class MainActivity : AppCompatActivity() {
+    override fun request() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    override fun initListener() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
+    override fun initData() {
 
+    }
 
+    override fun getLayoutId(): Int {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun initView() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
