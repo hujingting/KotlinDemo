@@ -25,9 +25,9 @@ abstract class BaseActivity : AppCompatActivity(), EasyPermissions.PermissionCal
     }
 
     private fun initListener() {
-        mLayoutStatusView?.setOnClickListener({
+        mLayoutStatusView?.setOnClickListener {
             request()
-        })
+        }
     }
 
     abstract fun request()
@@ -75,5 +75,6 @@ abstract class BaseActivity : AppCompatActivity(), EasyPermissions.PermissionCal
     override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {
         Log.i("EasyPermissions", "获取成功的权限$perms")
     }
+
 
 }
