@@ -1,7 +1,13 @@
-package com.tbs.kotlindemo
+package com.tbs.kotlindemo.activity
 
+import android.support.v4.app.FragmentTransaction
 import com.flyco.tablayout.listener.CustomTabEntity
 import com.flyco.tablayout.listener.OnTabSelectListener
+import com.tbs.kotlindemo.R
+import com.tbs.kotlindemo.base.BaseActivity
+import com.tbs.kotlindemo.fragment.FindFragment
+import com.tbs.kotlindemo.fragment.HomeFragment
+import com.tbs.kotlindemo.fragment.MineFragment
 import com.tbs.kotlindemo.model.TabEntity
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.ArrayList
@@ -13,6 +19,13 @@ class MainActivity : BaseActivity() {
     val mSelectedIcons = intArrayOf(R.drawable.ic_home_selected, R.drawable.ic_discovery_selected, R.drawable.ic_mine_selected)
 
     private val mTabEntities = ArrayList<CustomTabEntity>()
+
+
+    private var homeFragment: HomeFragment? = null
+    private var findFragment: FindFragment? = null
+    private var mineFragment: MineFragment? = null
+
+    private var index = 0
 
 
     override fun getLayoutId(): Int {
@@ -28,10 +41,11 @@ class MainActivity : BaseActivity() {
                 .mapTo(mTabEntities) { TabEntity(mTitles[it], mSelectedIcons[it], mUnSelectedIcons[it]) }
         //为Tab赋值
         tab_layout.setTabData(mTabEntities)
+
         tab_layout.setOnTabSelectListener(object : OnTabSelectListener {
             override fun onTabSelect(position: Int) {
-                //切换Fragment
-//                switchFragment(position)
+//                切换Fragment
+                switchFragment(position)
             }
 
             override fun onTabReselect(position: Int) {
@@ -40,13 +54,21 @@ class MainActivity : BaseActivity() {
         })
     }
 
-    override fun request() {
+    private fun switchFragment(position: Int) {
+        val transaction = supportFragmentManager.beginTransaction()
+        hideFragments(transaction)
     }
 
+    private fun hideFragments(transaction: FragmentTransaction) {
+        homeFragment?.let { transaction.hide(it)}
+//        findFragment?.let { transaction.hide(it)}
+//        mineFragment?.let { transaction.hide(it)}
+    }
 
+    override fun request() {
 
+    }
 
-    
 
     override fun initData() {
 

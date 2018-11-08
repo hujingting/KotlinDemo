@@ -1,4 +1,4 @@
-package com.tbs.kotlindemo
+package com.tbs.kotlindemo.base
 
 import android.os.Bundle
 import android.support.annotation.NonNull
