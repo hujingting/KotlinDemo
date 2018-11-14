@@ -1,6 +1,7 @@
 package com.tbs.kotlindemo.activity
 
 import android.support.v4.app.FragmentTransaction
+import android.view.KeyEvent
 import com.flyco.tablayout.listener.CustomTabEntity
 import com.flyco.tablayout.listener.OnTabSelectListener
 import com.tbs.kotlindemo.R
@@ -57,12 +58,42 @@ class MainActivity : BaseActivity() {
     private fun switchFragment(position: Int) {
         val transaction = supportFragmentManager.beginTransaction()
         hideFragments(transaction)
+        when (position) {
+            0 -> homeFragment?.let {
+                transaction.show(it)
+            } ?: HomeFragment.getInstance(mTitles[position]).let {
+                homeFragment = it
+                transaction.add(R.id.fl_container, it, "home")
+            }
+
+            1 -> findFragment?.let {
+                transaction.show(it)
+            } ?: FindFragment.getInstance(mTitles[position]).let {
+                findFragment = it
+                transaction.add(R.id.fl_container, it, "find")
+            }
+
+            2->mineFragment?.let {
+                transaction.show(it)
+            }?:MineFragment.getInstance(mTitles[position]).let {
+                mineFragment =it
+                transaction.add(R.id.fl_container,it, "mine")
+            }
+
+            else ->{
+
+            }
+        }
+
+        index = position
+        tab_layout.currentTab = index
+        transaction.commitAllowingStateLoss()
     }
 
     private fun hideFragments(transaction: FragmentTransaction) {
-        homeFragment?.let { transaction.hide(it)}
-//        findFragment?.let { transaction.hide(it)}
-//        mineFragment?.let { transaction.hide(it)}
+        homeFragment?.let { transaction.hide(it) }
+        findFragment?.let { transaction.hide(it) }
+        mineFragment?.let { transaction.hide(it) }
     }
 
     override fun request() {
@@ -72,5 +103,22 @@ class MainActivity : BaseActivity() {
 
     override fun initData() {
 
+    }
+
+
+    private var exitTime: Long = 0
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (System.currentTimeMillis().minus(exitTime) <= 2000) {
+                finish()
+            } else{
+                exitTime = System.currentTimeMillis()
+                s
+            }
+        }
+
+        return super.onKeyDown(keyCode, event)
     }
 }
