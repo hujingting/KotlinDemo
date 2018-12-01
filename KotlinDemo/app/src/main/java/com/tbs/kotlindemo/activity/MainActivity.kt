@@ -1,15 +1,20 @@
 package com.tbs.kotlindemo.activity
 
+import android.annotation.SuppressLint
+import android.os.Bundle
+import android.os.PersistableBundle
 import android.support.v4.app.FragmentTransaction
 import android.view.KeyEvent
 import com.flyco.tablayout.listener.CustomTabEntity
 import com.flyco.tablayout.listener.OnTabSelectListener
 import com.tbs.kotlindemo.R
 import com.tbs.kotlindemo.base.BaseActivity
+import com.tbs.kotlindemo.dip2px
 import com.tbs.kotlindemo.fragment.FindFragment
 import com.tbs.kotlindemo.fragment.HomeFragment
 import com.tbs.kotlindemo.fragment.MineFragment
 import com.tbs.kotlindemo.model.TabEntity
+import com.tbs.kotlindemo.showToast
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.ArrayList
 
@@ -105,6 +110,13 @@ class MainActivity : BaseActivity() {
 
     }
 
+    @SuppressLint("MissingSuperCall")
+    override fun onSaveInstanceState(outState: Bundle) {
+        if (tab_layout != null) {
+            outState.putInt("currTabIndex", index)
+        }
+    }
+
 
     private var exitTime: Long = 0
 
@@ -115,8 +127,9 @@ class MainActivity : BaseActivity() {
                 finish()
             } else{
                 exitTime = System.currentTimeMillis()
-                s
+                showToast("再按一次退出程序")
             }
+            return true
         }
 
         return super.onKeyDown(keyCode, event)

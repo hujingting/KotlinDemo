@@ -5,7 +5,6 @@ import com.tbs.kotlindemo.base.BaseFragment
 
 class HomeFragment: BaseFragment() {
 
-
     private var title: String? = null
 
     companion object {
