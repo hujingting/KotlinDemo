@@ -15,7 +15,14 @@ import pub.devrel.easypermissions.EasyPermissions
 
 abstract class BaseFragment : Fragment(), EasyPermissions.PermissionCallbacks{
 
+    /**
+     * 视图是否加载完毕
+     */
     private var isViewPrepare = false
+
+    /**
+     * 视图是否加载过
+     */
     private var hasLoadData = false
 
     protected var mLayoutStatusView: MultipleStatusView? = null

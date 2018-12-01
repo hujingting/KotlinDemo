@@ -20,9 +20,6 @@ class FindFragment: BaseFragment() {
             fragment.title = title
             return fragment
 
-
-
-            
         }
     }
 
@@ -37,6 +34,20 @@ class FindFragment: BaseFragment() {
     override fun getLayoutId(): Int {
         return R.layout.fragment_find
     }
+
+    fun forTest() {
+        val items = listOf("apple", "banana", "kiwifruit")
+        for (item in items) {
+            println(item)
+        }
+    }
+
+    fun describe(obj: Any):String =
+            when (obj) {
+                1 -> "One"
+                "hello" -> "greeting"
+                else -> "unknow"
+            }
 
 
 
