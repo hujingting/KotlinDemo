@@ -19,6 +19,10 @@ class FindFragment: BaseFragment() {
             fragment.arguments = bundle
             fragment.title = title
             return fragment
+
+
+
+            
         }
     }
 
