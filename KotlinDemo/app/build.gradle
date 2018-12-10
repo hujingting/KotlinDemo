@@ -27,16 +27,16 @@ dependencies {
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation 'junit:junit:4.12'
-//
-//    //GlideOkHttp
-//    implementation(rootProject.ext.glideOkhttp) {
-//        exclude group: 'glide-parent'
-//    }
 
     // Support库
     implementation rootProject.ext.supportLibs
-
-    implementation project(':multiple-status-view')
+    // 网络请求库
+    implementation rootProject.ext.networkLibs
+    // RxJava2
+    implementation rootProject.ext.rxJavaLibs
+    implementation rootProject.ext.otherLibs
+    // APT dependencies(Kotlin内置的注解处理器)
+    kapt rootProject.ext.annotationProcessorLibs
 
     // 底部菜单
     implementation('com.flyco.tablayout:FlycoTabLayout_Lib:2.1.0@aar') {
