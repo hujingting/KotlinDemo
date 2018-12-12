@@ -68,7 +68,7 @@ abstract class BaseFragment : Fragment(), EasyPermissions.PermissionCallbacks{
 
     override fun onDestroy() {
         super.onDestroy()
-        activity?.let { MyAppliction.getRefWatcher(it)?.watch(activity) }
+        activity?.let { MyApplication.getRefWatcher(it)?.watch(activity) }
     }
 
     /**

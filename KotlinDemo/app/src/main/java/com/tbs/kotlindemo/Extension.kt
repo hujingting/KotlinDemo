@@ -12,7 +12,7 @@ fun Fragment.showToast(content: String): Toast {
 }
 
 fun Context.showToast(content: String): Toast {
-    val toast = Toast.makeText(MyAppliction.context, content, Toast.LENGTH_SHORT)
+    val toast = Toast.makeText(MyApplication.context, content, Toast.LENGTH_SHORT)
     toast.show()
     return toast
 }

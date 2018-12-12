@@ -13,7 +13,7 @@ import com.tbs.kotlindemo.utils.DisplayUtils
 import kotlin.properties.Delegates
 
 
-class MyAppliction : Application() {
+class MyApplication : Application() {
 
     private var refWatcher: RefWatcher? = null
 
@@ -27,7 +27,7 @@ class MyAppliction : Application() {
             private set
 
         fun getRefWatcher(context: Context): RefWatcher? {
-            val myApplication = context.applicationContext as MyAppliction
+            val myApplication = context.applicationContext as MyApplication
             return myApplication.refWatcher
         }
     }
