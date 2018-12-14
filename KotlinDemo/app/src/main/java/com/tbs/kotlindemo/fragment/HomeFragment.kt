@@ -5,6 +5,8 @@ import android.support.v7.widget.LinearLayoutManager
 import com.tbs.kotlindemo.R
 import com.tbs.kotlindemo.base.BaseFragment
 import com.tbs.kotlindemo.presenter.HomePresenter
+import java.text.SimpleDateFormat
+import java.util.*
 
 class HomeFragment: BaseFragment() {
 
@@ -36,17 +38,22 @@ class HomeFragment: BaseFragment() {
         LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
     }
 
+    private val simpleDateFormat by lazy {
+        SimpleDateFormat("- MMM. dd, 'Brunch' -", Locale.ENGLISH)
+    }
 
+    override fun getLayoutId(): Int {
+        return R.layout.fragment_home
+    }
 
     override fun lazyLoad() {
         
     }
 
     override fun initView() {
-        
+
     }
 
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_home
-    }
+
+
 }

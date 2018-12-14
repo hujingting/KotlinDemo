@@ -2,18 +2,16 @@ package com.tbs.kotlindemo.activity
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.support.v4.app.FragmentTransaction
 import android.view.KeyEvent
 import com.flyco.tablayout.listener.CustomTabEntity
 import com.flyco.tablayout.listener.OnTabSelectListener
 import com.tbs.kotlindemo.R
 import com.tbs.kotlindemo.base.BaseActivity
-import com.tbs.kotlindemo.dip2px
 import com.tbs.kotlindemo.fragment.FindFragment
 import com.tbs.kotlindemo.fragment.HomeFragment
 import com.tbs.kotlindemo.fragment.MineFragment
-import com.tbs.kotlindemo.model.TabEntity
+import com.tbs.kotlindemo.model.bean.TabEntity
 import com.tbs.kotlindemo.showToast
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.ArrayList

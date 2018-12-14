@@ -23,7 +23,6 @@ class MineFragment : BaseFragment() , View.OnClickListener{
 
     override fun getLayoutId(): Int {
         return R.layout.fragment_mine
-
     }
 
     override fun onClick(view: View?) {

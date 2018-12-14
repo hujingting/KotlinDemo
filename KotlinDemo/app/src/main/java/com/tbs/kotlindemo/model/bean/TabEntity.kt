@@ -1,4 +1,4 @@
-package com.tbs.kotlindemo.model
+package com.tbs.kotlindemo.model.bean
 
 import com.flyco.tablayout.listener.CustomTabEntity
 
