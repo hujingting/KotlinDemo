@@ -11,8 +11,6 @@ class HomePresenter : BasePresenter<HomeContract.View>(), HomeContract.Presenter
 
     private var nextPageUrl: String? = null
 
-
-
     override fun requestHomeData(num: Int) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
