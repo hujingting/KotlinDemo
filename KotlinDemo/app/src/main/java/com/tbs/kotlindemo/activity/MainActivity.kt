@@ -24,7 +24,6 @@ class MainActivity : BaseActivity() {
 
     private val mTabEntities = ArrayList<CustomTabEntity>()
 
-
     private var homeFragment: HomeFragment? = null
     private var findFragment: FindFragment? = null
     private var mineFragment: MineFragment? = null

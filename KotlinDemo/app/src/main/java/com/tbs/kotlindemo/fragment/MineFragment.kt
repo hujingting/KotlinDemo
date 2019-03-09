@@ -26,17 +26,17 @@ class MineFragment : BaseFragment() , View.OnClickListener{
     }
 
     override fun onClick(view: View?) {
-        when {
-            view?.id == R.id.iv_avatar || view?.id == R.id.tv_view_homepage ->{
-                TODO()
-            }
-
-            view?.id == R.id.iv_about ->{
-                TODO()
-            }
-
-            view?.id == R.id.tv_mine_attention->showToast("关注")
-        }
+//        when {
+//            view?.id == R.id.iv_avatar || view?.id == R.id.tv_view_homepage ->{
+//                TODO()
+//            }
+//
+//            view?.id == R.id.iv_about ->{
+//                TODO()
+//            }
+//
+//            view?.id == R.id.tv_mine_attention->showToast("关注")
+//        }
     }
 
 

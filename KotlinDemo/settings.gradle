@@ -1,2 +1,2 @@
-include ':app',':multiple-status-view', ':KotlinPractice'
+include ':app',':multiple-status-view', ':KotlinPractice', ':giffun', ':core', ':network'
 
