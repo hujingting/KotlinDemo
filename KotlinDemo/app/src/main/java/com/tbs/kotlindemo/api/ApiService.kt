@@ -26,4 +26,6 @@ interface ApiService {
     fun getRelatedData(@Query("id") id: Long): Observable<HomeBean.Issue>
 
 
+
+
 }

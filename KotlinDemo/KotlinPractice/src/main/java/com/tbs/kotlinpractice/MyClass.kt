@@ -7,7 +7,6 @@ object MyClass {
     @JvmStatic
     fun main(args: Array<String>) {
 
-
 //        whileTest()
 //
 //        println(whenTest(1))
@@ -58,18 +57,41 @@ object MyClass {
         /**
          * kotlin中的异常 throw结构是一个表达式
          */
-        var number = 1
-        val percentage =
-                if (number in 0..100)
-                    number
-                else
-                    throw IllegalArgumentException(
-                            "A percentage value must be ..."
-                    )
+//        var number = 1
+//        val percentage =
+//                if (number in 0..100)
+//                    number
+//                else
+//                    throw IllegalArgumentException(
+//                            "A percentage value must be ..."
+//                    )
 
-        
+//        println("12.3456.A.B".split("\\.|-".toRegex()))
+
+//        parsePath("/Users/desktop/pic/dog.png")
+
+//        val button = Button()
+//        button.showOff()
+//        button.click()
+
+        val bob = User("bruce")
+        val ben = User("ben", false)
+        val mark = User("mark", isSub = false)
+
+
 
     }
+
+
+
+//    fun parsePath(path: String) {
+//        val directory = path.substringBeforeLast("/")
+//        val fullName = path.substringAfterLast("/")
+//        val fileName = fullName.substringBeforeLast(".")
+//        val extension = fullName.substringAfterLast(".")
+//
+//        println("Dir: $directory, name: $fileName, extension: $extension")
+//    }
 
     private fun isLetter(c: Char) = c in 'a'..'z' || c in 'A'..'Z'
 
