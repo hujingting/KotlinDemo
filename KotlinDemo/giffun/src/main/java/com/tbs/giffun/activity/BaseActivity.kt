@@ -66,6 +66,7 @@ open class BaseActivity : AppCompatActivity(), RequestLifecycle {
         weakRefActivity = WeakReference(this)
         ActivityCollector.add(weakRefActivity)
         EventBus.getDefault().register(this)
+
     }
 
     override fun onResume() {
@@ -89,7 +90,7 @@ open class BaseActivity : AppCompatActivity(), RequestLifecycle {
 
     override fun setContentView(layoutResID: Int) {
         super.setContentView(layoutResID)
-        loading = findViewById(R.id.loading)
+        loading = this.findViewById(R.id.loading)
     }
 
     protected fun setupToolbar() {
@@ -251,7 +252,7 @@ open class BaseActivity : AppCompatActivity(), RequestLifecycle {
 
     fun showProgressDialog(title: String?, message: String) {
         if (progressDialog == null) {
-            progressDialog = ProgressDialog(this).apply {
+            progressDialog = ProgressDialog(activity).apply {
                 if (title != null) {
                     setTitle(title)
                 }

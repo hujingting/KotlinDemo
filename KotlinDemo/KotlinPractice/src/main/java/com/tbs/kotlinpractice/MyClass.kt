@@ -74,15 +74,46 @@ object MyClass {
 //        button.showOff()
 //        button.click()
 
-        val bob = User("bruce")
-        val ben = User("ben", false)
-        val mark = User("mark", isSub = false)
+//        val bob = User("bruce")
+//        val ben = User("ben", false)
+//        val mark = User("mark", isSub = false)
 
+//        alphabet()
 
+//        printAllCaps()
 
+        val ceo = Employee("Bruce", null)
+        val dev = Employee("Tom", ceo)
+        println(managerName(ceo))
+        println(managerName(dev))
+
+        
     }
 
 
+//    fun printAllCaps(s: String?) {
+//        val allCaps: String? = s?.toUpperCase()
+//        println(allCaps)
+//    }
+
+    class Employee(val name: String, val manager: Employee?)
+
+    fun managerName(employee: Employee): String? = employee.manager?.name
+
+    fun alphabet(): String {
+        val stringBuilder = StringBuilder()
+        return with(stringBuilder) {
+            for (letter in 'A'..'Z') {
+                append(letter)
+            }
+
+            append("l konw the alphabet!")
+            toString()
+        }
+    }
+
+
+//    fun
 
 //    fun parsePath(path: String) {
 //        val directory = path.substringBeforeLast("/")
