@@ -82,14 +82,41 @@ object MyClass {
 
 //        printAllCaps()
 
-        val ceo = Employee("Bruce", null)
-        val dev = Employee("Tom", ceo)
-        println(managerName(ceo))
-        println(managerName(dev))
+//        val ceo = Employee("Bruce", null)
+//        val dev = Employee("Tom", ceo)
+//        println(managerName(ceo))
+//        println(managerName(dev))
 
-        
+//        ignoreNulls("test")
+
+        val email:String? = "email"
+//        if (email != null) {
+//            sendEmailTo(email)
+//        }
+        email?.let { sendEmailTo(it) }
+
+
     }
 
+    class MyService {
+        fun performAction(): String = "foo"
+    }
+
+    class MyTest {
+        /**
+         * 申明一个不需要初始化器的非空类型的属性
+         */
+        private lateinit var myService: MyService
+    }
+
+    fun ignoreNulls(s: String?) {
+        val sNotNull: String = s!!
+        println(sNotNull.length)
+    }
+
+    fun sendEmailTo(email: String) {
+        println("Sending email to $email")
+    }
 
 //    fun printAllCaps(s: String?) {
 //        val allCaps: String? = s?.toUpperCase()

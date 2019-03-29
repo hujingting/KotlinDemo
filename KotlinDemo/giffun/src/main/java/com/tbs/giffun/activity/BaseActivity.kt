@@ -93,6 +93,10 @@ open class BaseActivity : AppCompatActivity(), RequestLifecycle {
         loading = this.findViewById(R.id.loading)
     }
 
+    protected open fun setupViews() {
+        loading = findViewById(R.id.loading)
+    }
+
     protected fun setupToolbar() {
         toolbar = findViewById(R.id.toolbar)
 //        setSupportActionBar(toolbar)
