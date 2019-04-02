@@ -6,5 +6,5 @@ interface RequestLifecycle {
 
     fun loadFinished()
 
-    fun loadFaied(msg: String?)
+    fun loadFailed(msg: String?)
 }

@@ -336,7 +336,7 @@ open class BaseActivity : AppCompatActivity(), RequestLifecycle {
         loading?.visibility = View.GONE
     }
 
-    override fun loadFaied(msg: String?) {
+    override fun loadFailed(msg: String?) {
         loading?.visibility = View.GONE
     }
 

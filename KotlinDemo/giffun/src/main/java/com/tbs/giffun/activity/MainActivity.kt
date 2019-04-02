@@ -29,6 +29,9 @@ import com.quxianggif.core.util.SharedUtil
 import com.tbs.giffun.R
 import com.tbs.giffun.event.MessageEvent
 import com.tbs.giffun.event.ModifyUserInfoEvent
+import com.tbs.giffun.fragment.FollowingFeedsFragment
+import com.tbs.giffun.fragment.HotFeedsFragment
+import com.tbs.giffun.fragment.WorldFeedsFragment
 import com.tbs.giffun.utils.ColorUtils
 import com.tbs.giffun.utils.UserUtil
 import com.tbs.giffun.utils.gilde.CustomUrl
@@ -118,6 +121,9 @@ class MainActivity : BaseActivity() {
         setupToolbar()
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_menu)
         setUpViewPager(viewpager)
+        tabs.setupWithViewPager(viewpager)
+
+//        tabs.addOnTabSelectedListener()
     }
 
     private fun checkIsNeedToRefresh() {
@@ -148,7 +154,33 @@ class MainActivity : BaseActivity() {
 
     private fun setUpViewPager(viewPager: ViewPager) {
         pagerAdapter = MyAdapter(supportFragmentManager)
-//        pagerAdapter.addFragment()
+        pagerAdapter.addFragment(WorldFeedsFragment(), getString(R.string.world))
+        pagerAdapter.addFragment(FollowingFeedsFragment(), getString(R.string.follow))
+        pagerAdapter.addFragment(HotFeedsFragment(), getString(R.string.hot))
+        viewPager.adapter = pagerAdapter
+        viewPager.offscreenPageLimit = 2
+        currentPagerPosition = SharedUtil.read(Const.Feed.MAIN_PAGER_POSITION, 0)
+        if (currentPagerPosition < 0 || currentPagerPosition >= pagerAdapter.count) {
+            currentPagerPosition = 0
+        }
+        viewPager.currentItem = currentPagerPosition
+        viewPager.addOnPageChangeListener (object : ViewPager.OnPageChangeListener {
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+
+            }
+
+            override fun onPageSelected(position: Int) {
+                currentPagerPosition = position
+
+            }
+
+            override fun onPageScrollStateChanged(state: Int) {
+
+            }
+
+
+
+        })
     }
 
     /**
@@ -233,6 +265,10 @@ class MainActivity : BaseActivity() {
         override fun getPageTitle(position: Int): CharSequence? {
             return mFragmentTitles[position]
         }
+    }
+
+    private val tabSelectedListener by lazy {
+
     }
 
     companion object {
