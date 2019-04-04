@@ -1,16 +1,23 @@
 package com.tbs.giffun.activity
 
+import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.preference.PreferenceManager
+import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.content.ContextCompat
+import android.support.v4.view.GravityCompat
 import android.support.v4.view.ViewPager
 import android.support.v7.graphics.Palette
 import android.text.TextUtils
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewTreeObserver
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -21,9 +28,7 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.quxianggif.core.Const
 import com.quxianggif.core.GifFun
-import com.quxianggif.core.extension.dp2px
-import com.quxianggif.core.extension.logDebug
-import com.quxianggif.core.extension.toBitmap
+import com.quxianggif.core.extension.*
 import com.quxianggif.core.util.GlobalUtil
 import com.quxianggif.core.util.SharedUtil
 import com.tbs.giffun.R
@@ -32,6 +37,7 @@ import com.tbs.giffun.event.ModifyUserInfoEvent
 import com.tbs.giffun.fragment.FollowingFeedsFragment
 import com.tbs.giffun.fragment.HotFeedsFragment
 import com.tbs.giffun.fragment.WorldFeedsFragment
+import com.tbs.giffun.utils.AnimUtils
 import com.tbs.giffun.utils.ColorUtils
 import com.tbs.giffun.utils.UserUtil
 import com.tbs.giffun.utils.gilde.CustomUrl
@@ -42,8 +48,9 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import org.litepal.LitePal
 import org.litepal.LitePalDB
+import java.util.*
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var pagerAdapter: MyAdapter
 
@@ -117,13 +124,98 @@ class MainActivity : BaseActivity() {
         LitePal.use(litepalDB)
     }
 
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.compose -> GifFun.getHandler().postDelayed(300) {
+                PostFeedActivity.actionStart(this)
+            }
+            R.id.user_home -> GifFun.getHandler().postDelayed(300) {
+                UserHomePageActivity.actionStart(this, avatarMe, GifFun.getUserId(),
+                        UserUtil.nickname, UserUtil.avatar, UserUtil.bgImage)
+            }
+            R.id.draft -> GifFun.getHandler().postDelayed(300) { DraftActivity.actionStart(this) }
+            R.id.recommend_following -> GifFun.getHandler().postDelayed(300) { RecommendFollowingActivity.actionStart(this) }
+            R.id.settings -> GifFun.getHandler().postDelayed(300) { SettingsActivity.actionStart(this) }
+        }
+        GifFun.getHandler().post {
+            uncheckNavigationItems()
+            drawerLayout.closeDrawers()
+        }
+        return true
+    }
+
+    private fun uncheckNavigationItems() {
+        navView.setCheckedItem(R.id.none)
+
+    }
+
     override fun setupViews() {
         setupToolbar()
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_menu)
         setUpViewPager(viewpager)
         tabs.setupWithViewPager(viewpager)
+        composeFab.setOnClickListener {
+            PostFeedActivity.actionStart(this)
+        }
 
-//        tabs.addOnTabSelectedListener()
+        navView.setNavigationItemSelectedListener(this)
+        popFab()
+        animateToolbar()
+        navView.viewTreeObserver.addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
+            override fun onPreDraw(): Boolean {
+                navView.viewTreeObserver.removeOnPreDrawListener(this)
+                loadUserInfo()
+                return false
+            }
+        })
+    }
+
+    override fun onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            val now = System.currentTimeMillis()
+            if (now - backPressTime > 2000) {
+                showToast(String.format(GlobalUtil.getString(R.string.press_again_to_exit), GlobalUtil.appName))
+                backPressTime = now
+            } else {
+                super.onBackPressed()
+            }
+        }
+    }
+
+    /**
+     * fab按钮使用pop动画
+     */
+    private fun popFab() {
+        composeFab.show()
+        composeFab.alpha = 0f
+        composeFab.scaleX = 0f
+        composeFab.scaleY = 0f
+        val animator = ObjectAnimator.ofPropertyValuesHolder(
+                composeFab,
+                PropertyValuesHolder.ofFloat(View.ALPHA, 1f),
+                PropertyValuesHolder.ofFloat(View.SCALE_X, 1f),
+                PropertyValuesHolder.ofFloat(View.SCALE_Y, 1f)
+        )
+        animator.startDelay = 2000
+        animator.start()
+    }
+
+    /**
+     * toolbar标题使用缩放动画
+     */
+    private fun animateToolbar() {
+        val t = toolbar?.getChildAt(0)
+        if (t != null && t is TextView) {
+            t.alpha = 0f
+            t.scaleX = 0.8f
+            t.animate()
+                    .alpha(1f)
+                    .scaleX(1f)
+                    .setStartDelay(300)
+                    .setDuration(900).interpolator = AnimUtils.getFastOutSlowInInterpolator(this)
+        }
     }
 
     private fun checkIsNeedToRefresh() {
@@ -164,7 +256,7 @@ class MainActivity : BaseActivity() {
             currentPagerPosition = 0
         }
         viewPager.currentItem = currentPagerPosition
-        viewPager.addOnPageChangeListener (object : ViewPager.OnPageChangeListener {
+        viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
 
             }
@@ -177,7 +269,6 @@ class MainActivity : BaseActivity() {
             override fun onPageScrollStateChanged(state: Int) {
 
             }
-
 
 
         })
@@ -238,8 +329,8 @@ class MainActivity : BaseActivity() {
                         .into(navHeaderBg)
             }
 
-            userLayout.setOnClickListener {  }
-            descriptionLayout.setOnClickListener {  }
+            userLayout.setOnClickListener { }
+            descriptionLayout.setOnClickListener { }
         }
     }
 

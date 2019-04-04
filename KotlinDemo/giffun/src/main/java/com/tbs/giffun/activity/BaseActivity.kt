@@ -6,7 +6,6 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Color
-import android.opengl.Visibility
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
@@ -27,7 +26,6 @@ import com.tbs.giffun.callback.RequestLifecycle
 import com.tbs.giffun.event.ForceToLoginEvent
 import com.tbs.giffun.event.MessageEvent
 import com.tbs.giffun.utils.ActivityCollector
-import kotlinx.android.synthetic.main.loading.view.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode

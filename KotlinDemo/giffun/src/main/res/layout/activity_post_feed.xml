@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context="com.quxianggif.feeds.ui.PostFeedActivity">
+    tools:context=".activity.PostFeedActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
