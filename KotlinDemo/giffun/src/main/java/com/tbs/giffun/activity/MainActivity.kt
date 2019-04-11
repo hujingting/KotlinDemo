@@ -34,9 +34,7 @@ import com.quxianggif.core.util.SharedUtil
 import com.tbs.giffun.R
 import com.tbs.giffun.event.MessageEvent
 import com.tbs.giffun.event.ModifyUserInfoEvent
-import com.tbs.giffun.fragment.FollowingFeedsFragment
-import com.tbs.giffun.fragment.HotFeedsFragment
-import com.tbs.giffun.fragment.WorldFeedsFragment
+import com.tbs.giffun.fragment.*
 import com.tbs.giffun.utils.AnimUtils
 import com.tbs.giffun.utils.ColorUtils
 import com.tbs.giffun.utils.UserUtil
@@ -263,6 +261,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
             override fun onPageSelected(position: Int) {
                 currentPagerPosition = position
+                executePendingRunnable()
 
             }
 
@@ -272,6 +271,16 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
 
         })
+    }
+
+    /**
+     * 执行Pending任务，用于同步ViewPager各面页签之间的状态。
+     */
+    private fun executePendingRunnable() {
+        val fragment = pagerAdapter.getItem(currentPagerPosition)
+        if (fragment is BaseFeedsFragment) {
+            fragment.executePendingRunnableList()
+        }
     }
 
     /**
