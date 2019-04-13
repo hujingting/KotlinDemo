@@ -78,9 +78,10 @@ abstract class BaseFeedsFragment: BaseFragment() {
             override fun isNoMoreData() = isNoMoreData
         })
 
-        swipeRefresh.setOnRefreshListener { refreshLoads() }
+        swipeRefresh.setOnRefreshListener {
+//            refreshLoads()
+        }
         loadFeedsFromDB()
-
     }
 
 
@@ -137,8 +138,6 @@ abstract class BaseFeedsFragment: BaseFragment() {
     internal abstract fun setUpRecyclerView()
 
     internal abstract fun loadFeeds(lastFeed: Long)
-
-    internal abstract fun refreshLoads()
 
     internal abstract fun refreshFeeds()
 

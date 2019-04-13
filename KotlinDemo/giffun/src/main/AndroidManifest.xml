@@ -12,8 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/GifFun"
-        tools:ignore="GoogleAppIndexingWarning"
-        tools:targetApi="n">
+        tools:ignore="GoogleAppIndexingWarning">
 
         <activity
             android:name=".activity.OpenSourceSplashActivity"
@@ -39,11 +38,11 @@
             android:theme="@style/GifFun.LoginActivity"
             android:windowSoftInputMode="adjustResize|stateHidden">
             <intent-filter>
-                <action android:name="com.quxianggif.opensource.ACTION_LOGIN" />
+                <action android:name="com.tbs.giffun.ACTION_LOGIN" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <intent-filter>
-                <action android:name="com.quxianggif.opensource.ACTION_LOGIN_WITH_TRANSITION" />
+                <action android:name="com.tbs.giffun.ACTION_LOGIN_WITH_TRANSITION" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -58,14 +57,14 @@
             android:label="@string/title_about"
             android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="com.quxianggif.opensource.ACTION_VIEW_ABOUT" />
+                <action android:name="com.tbs.giffun.ACTION_VIEW_ABOUT" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
         <provider
             android:name=".utils.GifFunFileProvider"
-            android:authorities="com.quxianggif.opensource.fileprovider"
+            android:authorities="com.tbs.giffun.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

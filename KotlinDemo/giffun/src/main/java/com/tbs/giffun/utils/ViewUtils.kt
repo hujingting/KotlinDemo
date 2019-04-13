@@ -41,31 +41,30 @@ object ViewUtils {
      * true表示设置成深色，false表示设置成浅色。
      */
     fun setToolbarIconColor(activity: AppCompatActivity, toolbar: Toolbar, isDark: Boolean) {
-        try {
-            // change back button color.
-            val color: Int
-            if (isDark) {
-                color = ContextCompat.getColor(activity, R.color.black_text)
-            } else {
-                color = ContextCompat.getColor(activity, R.color.white_text)
-            }
-            val backArrow = ContextCompat.getDrawable(activity, R.drawable.abc_ic_ab_back_material)
-            backArrow?.setColorFilter(color, PorterDuff.Mode.SRC_ATOP)
-            val actionBar = activity.supportActionBar
-            actionBar?.setHomeAsUpIndicator(backArrow)
-            // change overflow button color.
-            var drawable = toolbar.overflowIcon
-            if (drawable != null) {
-                drawable = DrawableCompat.wrap(drawable)
-                DrawableCompat.setTint(drawable!!.mutate(), color)
-                toolbar.overflowIcon = drawable
-            }
-            // change title text color.
-            toolbar.setTitleTextColor(color)
-        } catch (e: Exception) {
-            logWarn(TAG, e.message, e)
-        }
-
+//        try {
+//            // change back button color.
+//            val color: Int
+//            if (isDark) {
+//                color = ContextCompat.getColor(activity, R.color.black_text)
+//            } else {
+//                color = ContextCompat.getColor(activity, R.color.white_text)
+//            }
+//            val backArrow = ContextCompat.getDrawable(activity, R.drawable.abc_ic_ab_back_material)
+//            backArrow?.setColorFilter(color, PorterDuff.Mode.SRC_ATOP)
+//            val actionBar = activity.supportActionBar
+//            actionBar?.setHomeAsUpIndicator(backArrow)
+//            // change overflow button color.
+//            var drawable = toolbar.overflowIcon
+//            if (drawable != null) {
+//                drawable = DrawableCompat.wrap(drawable)
+//                DrawableCompat.setTint(drawable!!.mutate(), color)
+//                toolbar.overflowIcon = drawable
+//            }
+//            // change title text color.
+//            toolbar.setTitleTextColor(color)
+//        } catch (e: Exception) {
+//            logWarn(TAG, e.message, e)
+//        }
     }
 
     fun setLightStatusBar(window: Window, view: View) {

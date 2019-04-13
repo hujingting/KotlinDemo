@@ -2,13 +2,9 @@ package com.tbs.giffun.adapter
 
 import android.annotation.TargetApi
 import android.app.Activity
-import android.opengl.Visibility
 import android.os.Build
 import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.ViewUtils
-import android.transition.Transition
-import android.transition.TransitionInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -22,11 +18,15 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.quxianggif.core.model.WaterFallFeed
 import com.quxianggif.core.util.AndroidVersion
+import com.quxianggif.core.util.GlobalUtil
 import com.quxianggif.network.model.LikeFeed
 import com.tbs.giffun.R
 import com.tbs.giffun.activity.UserHomePageActivity
 import com.tbs.giffun.event.LikeFeedEvent
 import com.tbs.giffun.holder.LoadingMoreViewHolder
+import com.tbs.giffun.utils.gilde.CustomUrl
+import com.tbs.giffun.view.CheckableImageButton
+import jp.wasabeef.glide.transformations.CropCircleTransformation
 import org.greenrobot.eventbus.EventBus
 import java.lang.Exception
 
@@ -150,6 +150,57 @@ abstract class WaterFallFeedAdapter<T : WaterFallFeed>(protected var activity: A
         }
         holder.avatar.setOnClickListener(userInfoListener)
         holder.nickname.setOnClickListener(userInfoListener)
+    }
+
+
+    protected fun baseBindFeedHolder(holder: FeedViewHolder, position: Int) {
+        val feed = feedList[position]
+        holder.feedContent.text = feed.content
+        holder.nickname.text = feed.nickname
+        holder.likesCount.text = GlobalUtil.getConvertedNumber(feed.likesCount)
+        val imageHeight = calculateImageHeight(feed)
+        holder.feedCover.layoutParams.width = imageWidth
+        holder.feedCover.layoutParams.height = imageHeight
+
+        if (AndroidVersion.hasLollipop()) {
+            val imageButton = holder.likes as CheckableImageButton
+            imageButton.isChecked = feed.isLikedAlready
+        } else {
+            if (feed.isLikedAlready) {
+                holder.likes.setImageResource(R.drawable.ic_liked)
+            } else {
+                holder.likes.setImageResource(R.drawable.ic_like)
+            }
+        }
+
+        loadFeedCover(feed, holder, imageHeight)
+        if (feed.avatar.isBlank()) {
+            Glide.with(activity)
+                    .load(R.drawable.avatar_default)
+                    .bitmapTransform(CropCircleTransformation(activity))
+                    .placeholder(R.drawable.loading_bg_circle)
+                    .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                    .into(holder.avatar)
+        } else {
+            Glide.with(activity)
+                    .load(CustomUrl(feed.avatar))
+                    .bitmapTransform(CropCircleTransformation(activity))
+                    .placeholder(R.drawable.loading_bg_circle)
+                    .error(R.drawable.avatar_default)
+                    .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                    .into(holder.avatar)
+        }
+
+        if (layoutManager != null) {
+            val visibleItemCount = layoutManager.childCount
+            if (visibleItemCount >= dataItemCount - 1) {
+                onLoad()
+            }
+        }
+    }
+
+    override fun getItemCount(): Int {
+        return dataItemCount + 1
     }
 
 
