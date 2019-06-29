@@ -107,6 +107,7 @@ abstract class LoginActivity : AuthActivity() {
                 putExtra(INTENT_HAS_NEW_VERSION, hasNewVersion)
                 putExtra(INTENT_VERSION, version)
             }
+
             if (AndroidVersion.hasLollipop()) {
                 intent.putExtra(START_WITH_TRANSITION, true)
                 val options = ActivityOptions.makeSceneTransitionAnimation(activity, logo,

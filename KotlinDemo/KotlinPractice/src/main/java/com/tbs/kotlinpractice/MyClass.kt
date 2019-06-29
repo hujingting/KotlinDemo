@@ -89,13 +89,52 @@ object MyClass {
 
 //        ignoreNulls("test")
 
-        val email:String? = "email"
-//        if (email != null) {
-//            sendEmailTo(email)
-//        }
-        email?.let { sendEmailTo(it) }
+//        val email:String? = "email"
+////        if (email != null) {
+////            sendEmailTo(email)
+////        }
+//        email?.let { sendEmailTo(it) }
 
 
+//        val list = listOf(1, 2, 3, 4)
+//        println(list.filter { it % 2 == 0 })
+//
+//        val people = listOf(Person("张三", 20), Person("李四", 30))
+//        println(people.filter { it.age >= 30})
+//
+//        println(list.map { it * it })
+//        println(people.map { it.name })
+//
+//        val maxAge = people.maxBy(Person::age)!!.age
+
+//        val numbers = mapOf(0 to "zero", 1 to "one")
+//        println(numbers.mapValues { it.value.toUpperCase() })
+
+//        val canBeInClub27 = { p: Person -> p.age <= 27 }
+//        val people = listOf(Person("张三", 20), Person("李四", 30))
+//        println(people.all(canBeInClub27))
+//        println(people.any(canBeInClub27))
+//        println(people.count(canBeInClub27))
+//        println(people.filter(canBeInClub27).size)
+//        println(people.find(canBeInClub27))
+
+//        val people = listOf(Person("张三", 20), Person("李四", 30), Person("王五", 20), Person("小莉", 30));
+//        println(people.groupBy { it.age })
+
+//        val list = listOf("a", "abc", "b")
+//        println(list.groupBy(String::first))
+
+
+//        val strings = listOf("abc", "def", "abc")
+//        println(strings.flatMap { it.toList().toSet() })
+
+
+        //为了提高效率，可以把操作变成序列
+        val people = listOf(Person("张三", 20), Person("李四", 30), Person("王五", 20), Person("小莉", 30));
+        println(people.asSequence()
+                .map(Person::name)
+                .filter { it.startsWith("张") }
+                .toList())
     }
 
     class MyService {
@@ -103,6 +142,7 @@ object MyClass {
     }
 
     class MyTest {
+
         /**
          * 申明一个不需要初始化器的非空类型的属性
          */

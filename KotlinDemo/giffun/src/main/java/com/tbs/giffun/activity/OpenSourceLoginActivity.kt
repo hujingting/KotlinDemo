@@ -84,11 +84,13 @@ class OpenSourceLoginActivity : LoginActivity() {
                 showToast(GlobalUtil.getString(R.string.phone_number_is_empty))
                 return@setOnClickListener
             }
+
             val pattern = "^1\\d{10}\$"
             if (!Pattern.matches(pattern, number)) {
                 showToast(GlobalUtil.getString(R.string.phone_number_is_invalid))
                 return@setOnClickListener
             }
+
             getVerifyCode.isClickable = false
             FetchVCode.getResponse(number, object : Callback {
                 override fun onResponse(response: Response) {

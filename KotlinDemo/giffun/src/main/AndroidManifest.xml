@@ -19,18 +19,21 @@
             android:screenOrientation="portrait"
             android:theme="@style/GifFun.SplashActivity">
             <intent-filter>
+
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".activity.MainActivity"/>
+        <activity android:name=".activity.MainActivity" />
 
         <uses-library
             android:name="org.apache.http.legacy"
-            android:required="false"/>
+            android:required="false" />
+
+
 
         <activity
             android:name=".activity.OpenSourceLoginActivity"
