@@ -130,11 +130,18 @@ object MyClass {
 
 
         //为了提高效率，可以把操作变成序列
-        val people = listOf(Person("张三", 20), Person("李四", 30), Person("王五", 20), Person("小莉", 30));
-        println(people.asSequence()
-                .map(Person::name)
-                .filter { it.startsWith("张") }
-                .toList())
+//        val people = listOf(Person("张三", 20), Person("李四", 30), Person("王五", 20), Person("小莉", 30));
+//        println(people.asSequence()
+//                .map(Person::name)
+//                .filter { it.startsWith("张") }
+//                .toList())
+
+
+//        val number = listOf("one", "two", "three", "four", "five", "six")
+//        println(number.slice(1..3))
+//        println(number.slice(0..4 step 2))
+//        println(number.slice(setOf(3,5,0)))
+
     }
 
     class MyService {
