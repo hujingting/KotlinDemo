@@ -1,2 +1,0 @@
-include ':app',':multiple-status-view', ':KotlinPractice', ':giffun', ':core', ':network'
-
