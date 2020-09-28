@@ -8,9 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6daa280f-39a4-4571-b472-66c85ede7596" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quxianggif/feeds/ui/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/quxianggif/feeds/ui/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../opensource/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../opensource/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../opensource/src/main/java/com/quxianggif/opensource/OpenSourceLoginActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../opensource/src/main/java/com/quxianggif/opensource/OpenSourceLoginActivity.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
