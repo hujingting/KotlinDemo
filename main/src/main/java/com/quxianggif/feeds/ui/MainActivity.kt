@@ -391,6 +391,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 UserHomePageActivity.actionStart(this, avatarMe, GifFun.getUserId(),
                         UserUtil.nickname, UserUtil.avatar, UserUtil.bgImage)
             }
+
             R.id.draft -> GifFun.getHandler().postDelayed(300) { DraftActivity.actionStart(this) }
             R.id.recommend_following -> GifFun.getHandler().postDelayed(300) { RecommendFollowingActivity.actionStart(this) }
             R.id.settings -> GifFun.getHandler().postDelayed(300) { SettingsActivity.actionStart(this) }

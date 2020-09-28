@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="6daa280f-39a4-4571-b472-66c85ede7596" name="Default Changelist" comment="" />
+    <list default="true" id="6daa280f-39a4-4571-b472-66c85ede7596" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/quxianggif/feeds/ui/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/quxianggif/feeds/ui/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../opensource/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../opensource/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../opensource/src/main/java/com/quxianggif/opensource/OpenSourceLoginActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../opensource/src/main/java/com/quxianggif/opensource/OpenSourceLoginActivity.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -11,6 +21,7 @@
     <option name="testRunner" value="GRADLE" />
     <option name="delegatedBuild" value="true" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="KV9D95BYZLNB8HEY" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -159,6 +170,12 @@
       <updated>1596684013511</updated>
     </task>
     <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="662" y="329" width="670" height="676" key="search.everywhere.popup" timestamp="1601256918649">
+      <screen x="50" y="23" width="1998" height="1129" />
+    </state>
+    <state x="662" y="329" width="670" height="676" key="search.everywhere.popup/50.23.1998.1129@50.23.1998.1129" timestamp="1601256918649" />
   </component>
   <component name="masterDetails">
     <states>

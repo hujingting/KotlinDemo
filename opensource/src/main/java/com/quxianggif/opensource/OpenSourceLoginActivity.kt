@@ -30,6 +30,7 @@ import com.quxianggif.core.extension.showToast
 import com.quxianggif.core.util.AndroidVersion
 import com.quxianggif.core.util.GlobalUtil
 import com.quxianggif.event.FinishActivityEvent
+import com.quxianggif.feeds.ui.WanMainActivity
 import com.quxianggif.login.ui.LoginActivity
 import com.quxianggif.network.model.Callback
 import com.quxianggif.network.model.FetchVCode
@@ -58,6 +59,7 @@ class OpenSourceLoginActivity : LoginActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        WanMainActivity.start(this@OpenSourceLoginActivity)
     }
 
     override fun setupViews() {
