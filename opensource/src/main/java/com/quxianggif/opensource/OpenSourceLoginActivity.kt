@@ -59,7 +59,6 @@ class OpenSourceLoginActivity : LoginActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        WanMainActivity.start(this@OpenSourceLoginActivity)
     }
 
     override fun setupViews() {
@@ -74,6 +73,7 @@ class OpenSourceLoginActivity : LoginActivity() {
                     EventBus.getDefault().post(event)
                     isTransitioning = false
                     fadeElementsIn()
+                    WanMainActivity.start(this@OpenSourceLoginActivity)
                 }
             })
         } else {

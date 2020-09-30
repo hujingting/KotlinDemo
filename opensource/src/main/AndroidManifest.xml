@@ -33,14 +33,17 @@
             android:screenOrientation="portrait"
             android:theme="@style/GifFun.LoginActivity"
             android:windowSoftInputMode="adjustResize|stateHidden">
+
             <intent-filter>
                 <action android:name="com.quxianggif.opensource.ACTION_LOGIN"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
+
             <intent-filter>
                 <action android:name="com.quxianggif.opensource.ACTION_LOGIN_WITH_TRANSITION"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
+
         </activity>
 
         <activity
