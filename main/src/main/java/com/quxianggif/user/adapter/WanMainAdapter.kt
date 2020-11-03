@@ -38,7 +38,7 @@ class WanMainAdapter(context: Context) : BasicRecycleAdapter<WanUser>(context) {
         val wanUser = getItem(position)
         viewHolder.wanUser.text = wanUser.name
 
-//        setItemWith(viewHolder.wanHeadIcon)
+        setItemWith(viewHolder.wanHeadIcon)
 
         Glide.with(mContext)
                 .load(headIconUrl[position])
@@ -49,17 +49,22 @@ class WanMainAdapter(context: Context) : BasicRecycleAdapter<WanUser>(context) {
         viewHolder.itemView.setOnClickListener {
             if (listener != null) {
                 listener.click(position, wanUser)
+
+
+
+
+                
+
             }
         }
     }
 
-//    fun setItemWith(itemView: View) {
-//        val params = itemView.layoutParams
-//        params.width = (screenWith - ScreenUtils.dip2px(30f))/ 2
-//        params.height = params.width
-//        itemView.layoutParams = params
-
-//    }
+    fun setItemWith(itemView: View) {
+        val params = itemView.layoutParams
+        params.width = (screenWith - ScreenUtils.dip2px(30f))/ 2
+        params.height = params.width
+        itemView.layoutParams = params
+    }
 
 
     internal class WanMainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

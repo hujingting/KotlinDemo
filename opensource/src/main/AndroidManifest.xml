@@ -20,11 +20,12 @@
             android:name=".OpenSourceSplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/GifFun.SplashActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+
         </activity>
 
         <activity
@@ -32,14 +33,17 @@
             android:screenOrientation="portrait"
             android:theme="@style/GifFun.LoginActivity"
             android:windowSoftInputMode="adjustResize|stateHidden">
+
             <intent-filter>
                 <action android:name="com.quxianggif.opensource.ACTION_LOGIN"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
+
             <intent-filter>
                 <action android:name="com.quxianggif.opensource.ACTION_LOGIN_WITH_TRANSITION"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
+
         </activity>
 
         <activity
@@ -62,9 +66,11 @@
             android:authorities="com.quxianggif.opensource.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
+
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths"/>
+
         </provider>
 
         <meta-data
