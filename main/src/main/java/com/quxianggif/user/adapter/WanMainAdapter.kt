@@ -49,6 +49,12 @@ class WanMainAdapter(context: Context) : BasicRecycleAdapter<WanUser>(context) {
         viewHolder.itemView.setOnClickListener {
             if (listener != null) {
                 listener.click(position, wanUser)
+
+
+
+
+                
+
             }
         }
     }
