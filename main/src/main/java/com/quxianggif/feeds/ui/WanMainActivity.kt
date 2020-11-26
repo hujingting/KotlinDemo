@@ -14,6 +14,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.palette.graphics.Palette
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -67,9 +68,12 @@ class WanMainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
 
     private lateinit var editImage: ImageView
 
-    private lateinit var mainFragment: MainFragment
-    private lateinit var articlesFragment: ArticlesFragment;
-    private lateinit var projectFragment: ProjectFragment
+    private var mainFragment: MainFragment? = null
+    private var articlesFragment: ArticlesFragment? = null;
+    private var projectFragment: ProjectFragment? = null;
+
+    //默认为0
+    private var mIndex = -1
 
     private var navHeaderBgLoadListener: RequestListener<Any, GlideDrawable> = object : RequestListener<Any, GlideDrawable> {
         override fun onException(e: Exception?, model: Any, target: Target<GlideDrawable>, isFirstResource: Boolean): Boolean {
@@ -113,6 +117,9 @@ class WanMainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        if (savedInstanceState != null) {
+            mIndex = savedInstanceState.getInt("currTabIndex")
+        }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_wan_main)
 
@@ -120,11 +127,25 @@ class WanMainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
 
         loadingWanMainData()
 
+        if (mIndex == -1) {
+            switchFragment(0)
+        } else {
+            switchFragment(mIndex)
+        }
+
         adapter.setOnItemClickListener(OnItemClickListerner() { which, obj ->
             val wanUser = obj as WanUser
 
             WeChatArticlesActivity.start(this, wanUser.id.toInt())
         })
+    }
+
+    @SuppressLint("MissingSuperCall")
+    override fun onSaveInstanceState(outState: Bundle) {
+//        showToast("onSaveInstanceState->"+mIndex)
+//        super.onSaveInstanceState(outState)
+        //记录fragment的位置,防止崩溃 activity被系统回收时，fragment错乱
+        outState.putInt("currTabIndex", mIndex)
     }
 
     override fun setupViews() {
@@ -304,39 +325,69 @@ class WanMainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
         }
     }
 
-    private fun setContentView(fragment: BaseFragment) {
-        val fragmentManager = supportFragmentManager
-        val transaction = fragmentManager.beginTransaction()
-        val fragments = fragmentManager.fragments
-        for (mFragment in fragments) {
-            if (!mFragment.isHidden) {
-                transaction.hide(mFragment)
+    /**
+     * 隐藏所有的Fragment
+     * @param transaction transaction
+     */
+    private fun hideFragments(transaction: FragmentTransaction) {
+        mainFragment?.let { transaction.hide(it) }
+        articlesFragment?.let { transaction.hide(it) }
+        projectFragment?.let { transaction.hide(it) }
+    }
+
+    private fun switchFragment(pos: Int) {
+
+        if (pos == mIndex) {
+            return
+        }
+
+        val transaction = supportFragmentManager.beginTransaction()
+        hideFragments(transaction)
+        when(pos) {
+            //首页
+            0 -> mainFragment?.let {
+                transaction.show(it)
+            } ?: MainFragment.newInstance().let {
+                mainFragment = it
+                transaction.add(R.id.fl_content, it, it.javaClass.simpleName)
+            }
+
+            //公众号
+            1 -> articlesFragment?.let {
+                transaction.show(it)
+            } ?: ArticlesFragment.newInstance().let {
+                articlesFragment = it
+                transaction.add(R.id.fl_content, it, it.javaClass.simpleName)
+            }
+
+            //项目
+            2 -> projectFragment?.let {
+                transaction.show(it)
+            } ?: ProjectFragment.newInstance().let {
+                projectFragment = it
+                transaction.add(R.id.fl_content, it, it.javaClass.simpleName)
+            } else -> {
+
             }
         }
 
-        if (!fragment.isAdded && fragmentManager.findFragmentByTag(fragment.javaClass.simpleName) == null) {
-            transaction.add(R.id.fl_content, fragment, fragment.javaClass.simpleName)
-        } else{
-            transaction.show(fragment)
-        }
-
-        if (!isFinishing) {
-            transaction.commitAllowingStateLoss()
-            fragmentManager.executePendingTransactions()
-        }
+        mIndex = pos
+        transaction.commitAllowingStateLoss()
     }
 
     override fun onClick(view: View?) {
-        when (view?.id) {
-            tv_main_tab.id ->
-                setContentView(MainFragment.newInstance())
-            tv_wx_articles_tab.id -> {
-                setContentView(ArticlesFragment.newInstance())
-            }
-            tv_project_tab.id ->
-                setContentView(ProjectFragment.newInstance())
-            else -> {
 
+        when (view?.id) {
+            tv_main_tab.id -> {
+                switchFragment(0)
+            }
+
+            tv_wx_articles_tab.id -> {
+                switchFragment(1)
+            }
+
+            tv_project_tab.id -> {
+                switchFragment(2)
             }
         }
     }
