@@ -18,16 +18,12 @@ import com.quxianggif.network.model.Callback
 import com.quxianggif.network.model.GetWechatArticles
 import com.quxianggif.network.model.Response
 import com.quxianggif.util.ResponseHandler
-import kotlinx.android.synthetic.main.activity_wan_main.*
 import com.chad.library.adapter.base.listener.OnItemClickListener
 import com.chad.library.adapter.base.listener.OnLoadMoreListener
 import com.quxianggif.R
 import com.quxianggif.common.ui.WebViewActivity
 import com.quxianggif.core.model.WeChatArticles
 import com.quxianggif.core.util.AndroidVersion
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_user_home_page.*
-import kotlinx.android.synthetic.main.activity_wan_main.rv_wan
 import kotlinx.android.synthetic.main.activity_wechat_article.*
 
 

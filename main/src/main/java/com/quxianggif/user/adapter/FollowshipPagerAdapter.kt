@@ -44,26 +44,30 @@ class FollowshipPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
         return titles[position]
     }
 
+    override fun getItem(position: Int): Fragment {
+        TODO("Not yet implemented")
+    }
+
     override fun getCount(): Int {
         return titles.size
     }
 
-    override fun getItem(position: Int): Fragment? {
-        return when (position) {
-            0 -> {
-                if (followingsFragment == null) {
-                    followingsFragment = FollowingsFragment()
-                }
-                followingsFragment
-            }
-            1 -> {
-                if (followersFragment == null) {
-                    followersFragment = FollowersFragment()
-                }
-                followersFragment
-            }
-            else -> null
-        }
-    }
+//    override fun getItem(position: Int): Fragment？ {
+//        return when (position) {
+//            0 -> {
+//                if (followingsFragment == null) {
+//                    followingsFragment = FollowingsFragment()
+//                }
+//                followingsFragment
+//            }
+//            1 -> {
+//                if (followersFragment == null) {
+//                    followersFragment = FollowersFragment()
+//                }
+//                followersFragment
+//            }
+//            else -> null
+//        }
+//    }
 
 }

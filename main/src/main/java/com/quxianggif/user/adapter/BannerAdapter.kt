@@ -14,12 +14,15 @@ import com.quxianggif.R
 import com.quxianggif.adapter.BasicRecycleAdapter
 import com.quxianggif.core.model.WanUser
 import com.quxianggif.util.ScreenUtils
+import com.umeng.commonsdk.stateless.UMSLEnvelopeBuild
+import com.umeng.commonsdk.stateless.UMSLEnvelopeBuild.mContext
+import kotlinx.android.synthetic.main.item_banner_list.view.*
 
 /**
  * author jingting
  * date : 2020-05-2911:04
  */
-class WanMainAdapter(context: Context) : BasicRecycleAdapter<WanUser>(context) {
+class BannerAdapter(context: Context) : BasicRecycleAdapter<WanUser>(context) {
 
     var screenWith = ScreenUtils.screenWidth
 
@@ -28,29 +31,30 @@ class WanMainAdapter(context: Context) : BasicRecycleAdapter<WanUser>(context) {
             R.drawable.img_google_developer, R.drawable.img_mei_yuan, R.drawable.img_yi_fei_yuan)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val view = LayoutInflater.from(mContext).inflate(R.layout.item_wan_main_list, parent, false)
+        val view = LayoutInflater.from(mContext).inflate(R.layout.item_banner_list, parent, false)
         return WanMainViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val viewHolder = holder as WanMainViewHolder
 
-        val wanUser = getItem(position)
-        viewHolder.wanUser.text = wanUser.name
-
-        setItemWith(viewHolder.wanHeadIcon)
+//        val wanUser = getItem(position)
 
         Glide.with(mContext)
                 .load(headIconUrl[position])
                 .placeholder(R.drawable.avatar_default)
                 .error(R.drawable.avatar_default)
-                .into(holder.wanHeadIcon)
+                .into(viewHolder.itemView.iv_banner)
 
-        viewHolder.itemView.setOnClickListener {
-            if (listener != null) {
-                listener.click(position, wanUser)
-            }
-        }
+//        viewHolder.itemView.setOnClickListener {
+//            if (listener != null) {
+//                listener.click(position, wanUser)
+//            }
+//        }
+    }
+
+    override fun getItemCount(): Int {
+        return 6;
     }
 
     fun setItemWith(itemView: View) {
@@ -61,10 +65,7 @@ class WanMainAdapter(context: Context) : BasicRecycleAdapter<WanUser>(context) {
     }
 
 
-    internal class WanMainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+     class WanMainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        var wanUser: TextView = itemView.findViewById(R.id.tv_wan_user)
-        var wanHeadIcon: ImageView = itemView.findViewById(R.id.iv_wan_head_icon)
-
-    }
+     }
 }

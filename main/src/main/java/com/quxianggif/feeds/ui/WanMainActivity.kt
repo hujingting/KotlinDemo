@@ -13,11 +13,8 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.palette.graphics.Palette
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.GlideDrawable
@@ -25,24 +22,17 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.google.android.material.navigation.NavigationView
 import com.quxianggif.R
-import com.quxianggif.adapter.OnItemClickListerner
 import com.quxianggif.common.ui.*
 import com.quxianggif.core.GifFun
 import com.quxianggif.core.extension.*
-import com.quxianggif.core.model.WanUser
 import com.quxianggif.core.util.GlobalUtil
 import com.quxianggif.event.MessageEvent
 import com.quxianggif.event.ModifyUserInfoEvent
-import com.quxianggif.network.model.Callback
-import com.quxianggif.network.model.GetWanMain
-import com.quxianggif.network.model.Response
 import com.quxianggif.settings.ui.SettingsActivity
-import com.quxianggif.user.adapter.WanMainAdapter
 import com.quxianggif.user.ui.ModifyUserInfoActivity
 import com.quxianggif.user.ui.RecommendFollowingActivity
 import com.quxianggif.user.ui.UserHomePageActivity
 import com.quxianggif.util.ColorUtils
-import com.quxianggif.util.ResponseHandler
 import com.quxianggif.util.UserUtil
 import com.quxianggif.util.glide.CustomUrl
 import jp.wasabeef.glide.transformations.BlurTransformation
@@ -57,8 +47,6 @@ import org.greenrobot.eventbus.ThreadMode
  * date : 2020-05-2716:45
  */
 class WanMainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
-
-    internal lateinit var adapter: WanMainAdapter
 
     private lateinit var nicknameMe: TextView
 
@@ -123,21 +111,12 @@ class WanMainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_wan_main)
 
-        setRecyclerView()
-
-        loadingWanMainData()
 
         if (mIndex == -1) {
             switchFragment(0)
         } else {
             switchFragment(mIndex)
         }
-
-        adapter.setOnItemClickListener(OnItemClickListerner() { which, obj ->
-            val wanUser = obj as WanUser
-
-            WeChatArticlesActivity.start(this, wanUser.id.toInt())
-        })
     }
 
     @SuppressLint("MissingSuperCall")
@@ -267,37 +246,6 @@ class WanMainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
         return true
     }
 
-    private fun loadingWanMainData() {
-        startLoading()
-        GetWanMain.getResponse(object : Callback {
-            override fun onResponse(response: Response) {
-                if (ResponseHandler.handleWanResponse(response)) {
-                    val getWanMain = response as GetWanMain
-                    var wanUsers = getWanMain.users
-                    for (wanUser in wanUsers) {
-                        val name = wanUser.name
-                        if (TextUtils.equals(name, "奇卓社") || TextUtils.equals(name, "GcsSloop") || TextUtils.equals(name, "互联网侦察")
-                                || TextUtils.equals(name, "susion随心") || TextUtils.equals(name, "Gityuan")) {
-                            wanUsers = wanUsers - wanUser
-                        }
-                    }
-                    adapter.data = wanUsers
-                }
-            }
-
-            override fun onFailure(e: Exception) {
-
-            }
-        })
-    }
-
-    private fun setRecyclerView() {
-        val manager = GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false)
-        rv_wan.layoutManager = manager
-        adapter = WanMainAdapter(this)
-        rv_wan.adapter = adapter
-    }
-
     private var backPressTime = 0L
 
     override fun onBackPressed() {
@@ -314,14 +262,20 @@ class WanMainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
         }
     }
 
+    override fun onClick(view: View?) {
 
-    companion object {
+        when (view?.id) {
+            tv_main_tab.id -> {
+                switchFragment(0)
+            }
 
-        private const val TAG = "WanMainActivity"
+            tv_wx_articles_tab.id -> {
+                switchFragment(1)
+            }
 
-        fun start(activity: Activity) {
-            val intent = Intent(activity, WanMainActivity::class.java);
-            activity.startActivity(intent)
+            tv_project_tab.id -> {
+                switchFragment(2)
+            }
         }
     }
 
@@ -375,20 +329,14 @@ class WanMainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
         transaction.commitAllowingStateLoss()
     }
 
-    override fun onClick(view: View?) {
+    companion object {
 
-        when (view?.id) {
-            tv_main_tab.id -> {
-                switchFragment(0)
-            }
+        private const val TAG = "WanMainActivity"
 
-            tv_wx_articles_tab.id -> {
-                switchFragment(1)
-            }
-
-            tv_project_tab.id -> {
-                switchFragment(2)
-            }
+        fun start(activity: Activity) {
+            val intent = Intent(activity, WanMainActivity::class.java);
+            activity.startActivity(intent)
         }
     }
+
 }

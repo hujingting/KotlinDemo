@@ -20,12 +20,6 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_wan"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:visibility="gone"
-            android:layout_weight="1"/>
 
         <FrameLayout
             android:id="@+id/fl_content"

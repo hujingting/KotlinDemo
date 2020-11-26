@@ -24,6 +24,7 @@ import com.quxianggif.core.GifFun
 import com.quxianggif.util.ScreenUtils
 import com.umeng.analytics.MobclickAgent
 import com.umeng.commonsdk.UMConfigure
+import com.xuexiang.xui.XUI
 import org.litepal.LitePal
 
 /**
@@ -41,6 +42,9 @@ open class GifFunApplication : Application() {
         MobclickAgent.setCatchUncaughtExceptions(false) // 关闭友盟的崩溃采集功能，使用腾讯Bugly
         LitePal.initialize(this)
         ScreenUtils.initScreen(this)
+
+        XUI.init(this); //初始化UI框架
+        XUI.debug(true);  //开启UI框架调试日志
     }
 
     override fun attachBaseContext(base: Context) {
