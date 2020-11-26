@@ -6,12 +6,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.MenuItem
+import android.view.View
 import android.view.ViewTreeObserver
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
+import androidx.fragment.app.Fragment
 import androidx.palette.graphics.Palette
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,7 +25,7 @@ import com.bumptech.glide.request.target.Target
 import com.google.android.material.navigation.NavigationView
 import com.quxianggif.R
 import com.quxianggif.adapter.OnItemClickListerner
-import com.quxianggif.common.ui.BaseActivity
+import com.quxianggif.common.ui.*
 import com.quxianggif.core.GifFun
 import com.quxianggif.core.extension.*
 import com.quxianggif.core.model.WanUser
@@ -53,7 +55,7 @@ import org.greenrobot.eventbus.ThreadMode
  * author jingting
  * date : 2020-05-2716:45
  */
-class WanMainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener  {
+class WanMainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     internal lateinit var adapter: WanMainAdapter
 
@@ -64,6 +66,10 @@ class WanMainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
     private lateinit var avatarMe: ImageView
 
     private lateinit var editImage: ImageView
+
+    private lateinit var mainFragment: MainFragment
+    private lateinit var articlesFragment: ArticlesFragment;
+    private lateinit var projectFragment: ProjectFragment
 
     private var navHeaderBgLoadListener: RequestListener<Any, GlideDrawable> = object : RequestListener<Any, GlideDrawable> {
         override fun onException(e: Exception?, model: Any, target: Target<GlideDrawable>, isFirstResource: Boolean): Boolean {
@@ -115,7 +121,7 @@ class WanMainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
         loadingWanMainData()
 
         adapter.setOnItemClickListener(OnItemClickListerner() { which, obj ->
-             val wanUser = obj as WanUser
+            val wanUser = obj as WanUser
 
             WeChatArticlesActivity.start(this, wanUser.id.toInt())
         })
@@ -133,11 +139,15 @@ class WanMainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
                 return false
             }
         })
+
+        tv_main_tab.setOnClickListener(this)
+        tv_project_tab.setOnClickListener(this)
+        tv_wx_articles_tab.setOnClickListener(this)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.compose -> GifFun.getHandler().postDelayed(300){ PostFeedActivity.actionStart(this) }
+            R.id.compose -> GifFun.getHandler().postDelayed(300) { PostFeedActivity.actionStart(this) }
             R.id.user_home -> GifFun.getHandler().postDelayed(300) {
                 UserHomePageActivity.actionStart(this, avatarMe, GifFun.getUserId(),
                         UserUtil.nickname, UserUtil.avatar, UserUtil.bgImage)
@@ -145,7 +155,7 @@ class WanMainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
             R.id.draft -> GifFun.getHandler().postDelayed(300) { DraftActivity.actionStart(this) }
             R.id.recommend_following -> GifFun.getHandler().postDelayed(300) { RecommendFollowingActivity.actionStart(this) }
             R.id.settings -> GifFun.getHandler().postDelayed(300) { SettingsActivity.actionStart(this) }
-            R.id.wan_android -> GifFun.getHandler().postDelayed(300) {MainActivity.actionStart(this)}
+            R.id.wan_android -> GifFun.getHandler().postDelayed(300) { MainActivity.actionStart(this) }
         }
 
         GifFun.getHandler().post {
@@ -242,7 +252,7 @@ class WanMainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
             override fun onResponse(response: Response) {
                 if (ResponseHandler.handleWanResponse(response)) {
                     val getWanMain = response as GetWanMain
-                    var wanUsers  = getWanMain.users
+                    var wanUsers = getWanMain.users
                     for (wanUser in wanUsers) {
                         val name = wanUser.name
                         if (TextUtils.equals(name, "奇卓社") || TextUtils.equals(name, "GcsSloop") || TextUtils.equals(name, "互联网侦察")
@@ -291,6 +301,43 @@ class WanMainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
         fun start(activity: Activity) {
             val intent = Intent(activity, WanMainActivity::class.java);
             activity.startActivity(intent)
+        }
+    }
+
+    private fun setContentView(fragment: BaseFragment) {
+        val fragmentManager = supportFragmentManager
+        val transaction = fragmentManager.beginTransaction()
+        val fragments = fragmentManager.fragments
+        for (mFragment in fragments) {
+            if (!mFragment.isHidden) {
+                transaction.hide(mFragment)
+            }
+        }
+
+        if (!fragment.isAdded && fragmentManager.findFragmentByTag(fragment.javaClass.simpleName) == null) {
+            transaction.add(R.id.fl_content, fragment, fragment.javaClass.simpleName)
+        } else{
+            transaction.show(fragment)
+        }
+
+        if (!isFinishing) {
+            transaction.commitAllowingStateLoss()
+            fragmentManager.executePendingTransactions()
+        }
+    }
+
+    override fun onClick(view: View?) {
+        when (view?.id) {
+            tv_main_tab.id ->
+                setContentView(MainFragment.newInstance())
+            tv_wx_articles_tab.id -> {
+                setContentView(ArticlesFragment.newInstance())
+            }
+            tv_project_tab.id ->
+                setContentView(ProjectFragment.newInstance())
+            else -> {
+
+            }
         }
     }
 }
