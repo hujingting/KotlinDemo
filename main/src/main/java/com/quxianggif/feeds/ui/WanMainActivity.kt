@@ -6,15 +6,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.MenuItem
+import android.view.View
 import android.view.ViewTreeObserver
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
+import androidx.fragment.app.FragmentTransaction
 import androidx.palette.graphics.Palette
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.GlideDrawable
@@ -22,24 +22,17 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.google.android.material.navigation.NavigationView
 import com.quxianggif.R
-import com.quxianggif.adapter.OnItemClickListerner
-import com.quxianggif.common.ui.BaseActivity
+import com.quxianggif.common.ui.*
 import com.quxianggif.core.GifFun
 import com.quxianggif.core.extension.*
-import com.quxianggif.core.model.WanUser
 import com.quxianggif.core.util.GlobalUtil
 import com.quxianggif.event.MessageEvent
 import com.quxianggif.event.ModifyUserInfoEvent
-import com.quxianggif.network.model.Callback
-import com.quxianggif.network.model.GetWanMain
-import com.quxianggif.network.model.Response
 import com.quxianggif.settings.ui.SettingsActivity
-import com.quxianggif.user.adapter.WanMainAdapter
 import com.quxianggif.user.ui.ModifyUserInfoActivity
 import com.quxianggif.user.ui.RecommendFollowingActivity
 import com.quxianggif.user.ui.UserHomePageActivity
 import com.quxianggif.util.ColorUtils
-import com.quxianggif.util.ResponseHandler
 import com.quxianggif.util.UserUtil
 import com.quxianggif.util.glide.CustomUrl
 import jp.wasabeef.glide.transformations.BlurTransformation
@@ -53,9 +46,7 @@ import org.greenrobot.eventbus.ThreadMode
  * author jingting
  * date : 2020-05-2716:45
  */
-class WanMainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener  {
-
-    internal lateinit var adapter: WanMainAdapter
+class WanMainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     private lateinit var nicknameMe: TextView
 
@@ -64,6 +55,13 @@ class WanMainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
     private lateinit var avatarMe: ImageView
 
     private lateinit var editImage: ImageView
+
+    private var mainFragment: MainFragment? = null
+    private var articlesFragment: ArticlesFragment? = null;
+    private var projectFragment: ProjectFragment? = null;
+
+    //默认为0
+    private var mIndex = -1
 
     private var navHeaderBgLoadListener: RequestListener<Any, GlideDrawable> = object : RequestListener<Any, GlideDrawable> {
         override fun onException(e: Exception?, model: Any, target: Target<GlideDrawable>, isFirstResource: Boolean): Boolean {
@@ -107,18 +105,26 @@ class WanMainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        if (savedInstanceState != null) {
+            mIndex = savedInstanceState.getInt("currTabIndex")
+        }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_wan_main)
 
-        setRecyclerView()
 
-        loadingWanMainData()
+        if (mIndex == -1) {
+            switchFragment(0)
+        } else {
+            switchFragment(mIndex)
+        }
+    }
 
-        adapter.setOnItemClickListener(OnItemClickListerner() { which, obj ->
-             val wanUser = obj as WanUser
-
-            WeChatArticlesActivity.start(this, wanUser.id.toInt())
-        })
+    @SuppressLint("MissingSuperCall")
+    override fun onSaveInstanceState(outState: Bundle) {
+//        showToast("onSaveInstanceState->"+mIndex)
+//        super.onSaveInstanceState(outState)
+        //记录fragment的位置,防止崩溃 activity被系统回收时，fragment错乱
+        outState.putInt("currTabIndex", mIndex)
     }
 
     override fun setupViews() {
@@ -133,11 +139,15 @@ class WanMainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
                 return false
             }
         })
+
+        tv_main_tab.setOnClickListener(this)
+        tv_project_tab.setOnClickListener(this)
+        tv_wx_articles_tab.setOnClickListener(this)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.compose -> GifFun.getHandler().postDelayed(300){ PostFeedActivity.actionStart(this) }
+            R.id.compose -> GifFun.getHandler().postDelayed(300) { PostFeedActivity.actionStart(this) }
             R.id.user_home -> GifFun.getHandler().postDelayed(300) {
                 UserHomePageActivity.actionStart(this, avatarMe, GifFun.getUserId(),
                         UserUtil.nickname, UserUtil.avatar, UserUtil.bgImage)
@@ -145,7 +155,7 @@ class WanMainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
             R.id.draft -> GifFun.getHandler().postDelayed(300) { DraftActivity.actionStart(this) }
             R.id.recommend_following -> GifFun.getHandler().postDelayed(300) { RecommendFollowingActivity.actionStart(this) }
             R.id.settings -> GifFun.getHandler().postDelayed(300) { SettingsActivity.actionStart(this) }
-            R.id.wan_android -> GifFun.getHandler().postDelayed(300) {MainActivity.actionStart(this)}
+            R.id.wan_android -> GifFun.getHandler().postDelayed(300) { MainActivity.actionStart(this) }
         }
 
         GifFun.getHandler().post {
@@ -236,37 +246,6 @@ class WanMainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
         return true
     }
 
-    private fun loadingWanMainData() {
-        startLoading()
-        GetWanMain.getResponse(object : Callback {
-            override fun onResponse(response: Response) {
-                if (ResponseHandler.handleWanResponse(response)) {
-                    val getWanMain = response as GetWanMain
-                    var wanUsers  = getWanMain.users
-                    for (wanUser in wanUsers) {
-                        val name = wanUser.name
-                        if (TextUtils.equals(name, "奇卓社") || TextUtils.equals(name, "GcsSloop") || TextUtils.equals(name, "互联网侦察")
-                                || TextUtils.equals(name, "susion随心") || TextUtils.equals(name, "Gityuan")) {
-                            wanUsers = wanUsers - wanUser
-                        }
-                    }
-                    adapter.data = wanUsers
-                }
-            }
-
-            override fun onFailure(e: Exception) {
-
-            }
-        })
-    }
-
-    private fun setRecyclerView() {
-        val manager = GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false)
-        rv_wan.layoutManager = manager
-        adapter = WanMainAdapter(this)
-        rv_wan.adapter = adapter
-    }
-
     private var backPressTime = 0L
 
     override fun onBackPressed() {
@@ -283,6 +262,72 @@ class WanMainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
         }
     }
 
+    override fun onClick(view: View?) {
+
+        when (view?.id) {
+            tv_main_tab.id -> {
+                switchFragment(0)
+            }
+
+            tv_wx_articles_tab.id -> {
+                switchFragment(1)
+            }
+
+            tv_project_tab.id -> {
+                switchFragment(2)
+            }
+        }
+    }
+
+    /**
+     * 隐藏所有的Fragment
+     * @param transaction transaction
+     */
+    private fun hideFragments(transaction: FragmentTransaction) {
+        mainFragment?.let { transaction.hide(it) }
+        articlesFragment?.let { transaction.hide(it) }
+        projectFragment?.let { transaction.hide(it) }
+    }
+
+    private fun switchFragment(pos: Int) {
+
+        if (pos == mIndex) {
+            return
+        }
+
+        val transaction = supportFragmentManager.beginTransaction()
+        hideFragments(transaction)
+        when(pos) {
+            //首页
+            0 -> mainFragment?.let {
+                transaction.show(it)
+            } ?: MainFragment.newInstance().let {
+                mainFragment = it
+                transaction.add(R.id.fl_content, it, it.javaClass.simpleName)
+            }
+
+            //公众号
+            1 -> articlesFragment?.let {
+                transaction.show(it)
+            } ?: ArticlesFragment.newInstance().let {
+                articlesFragment = it
+                transaction.add(R.id.fl_content, it, it.javaClass.simpleName)
+            }
+
+            //项目
+            2 -> projectFragment?.let {
+                transaction.show(it)
+            } ?: ProjectFragment.newInstance().let {
+                projectFragment = it
+                transaction.add(R.id.fl_content, it, it.javaClass.simpleName)
+            } else -> {
+
+            }
+        }
+
+        mIndex = pos
+        transaction.commitAllowingStateLoss()
+    }
 
     companion object {
 
@@ -293,4 +338,5 @@ class WanMainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
             activity.startActivity(intent)
         }
     }
+
 }
