@@ -15,7 +15,7 @@ class WeChatArticlesMain : Model() {
     var id : Long = 0
 
     @SerializedName("datas")
-    var weChatArticles : List<WeChatArticles> = ArrayList()
+    var articles : MutableList<Articles> = ArrayList()
 
     @SerializedName("curPage")
     var curPage : Int = 0

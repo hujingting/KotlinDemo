@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
  * author jingting
  * date : 2020-05-2914:24
  */
-class WeChatArticles : Model() {
+class Articles : Model() {
 
     /**
      * apkLink: "",
@@ -56,6 +56,9 @@ class WeChatArticles : Model() {
 
     @SerializedName("author")
     var author : String = ""
+
+    @SerializedName("shareUser")
+    var shareUser: String = ""
 
     @SerializedName("link")
     var link: String = ""

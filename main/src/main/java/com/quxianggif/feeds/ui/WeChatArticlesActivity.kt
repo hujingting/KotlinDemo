@@ -7,10 +7,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.animation.ScaleInAnimation
 import com.chad.library.adapter.base.animation.SlideInBottomAnimation
 import com.quxianggif.common.ui.BaseActivity
 import com.quxianggif.feeds.adapter.WeChatArticlesAdapter
@@ -22,7 +19,7 @@ import com.chad.library.adapter.base.listener.OnItemClickListener
 import com.chad.library.adapter.base.listener.OnLoadMoreListener
 import com.quxianggif.R
 import com.quxianggif.common.ui.WebViewActivity
-import com.quxianggif.core.model.WeChatArticles
+import com.quxianggif.core.model.Articles
 import com.quxianggif.core.util.AndroidVersion
 import kotlinx.android.synthetic.main.activity_wechat_article.*
 
@@ -61,7 +58,7 @@ class WeChatArticlesActivity: BaseActivity() {
                 if (ResponseHandler.handleWanResponse(response)) {
                     val weChatAritcle = response as GetWechatArticles
                     val wechatArticlesMain = weChatAritcle.wechatArticelsMain
-                    val wechatArticles = wechatArticlesMain.weChatArticles
+                    val wechatArticles = wechatArticlesMain.articles
 
                     if (page == 1) {
                         adapter.setList(wechatArticles)
@@ -139,7 +136,7 @@ class WeChatArticlesActivity: BaseActivity() {
 
 
         adapter.setOnItemClickListener(OnItemClickListener { adapter, view, position ->
-            val wechatArticles = adapter.getItem(position) as WeChatArticles
+            val wechatArticles = adapter.getItem(position) as Articles
             WebViewActivity.actionStart(this, wechatArticles.title, wechatArticles.link)
         })
 

@@ -101,7 +101,7 @@
             android:screenOrientation="portrait">
         </activity>
         <activity android:name=".feeds.ui.WanMainActivity"
-            android:label="Android 公众号"
+            android:label="玩~Android"
             android:screenOrientation="portrait"/>
 
         <activity android:name=".feeds.ui.WeChatArticlesActivity"

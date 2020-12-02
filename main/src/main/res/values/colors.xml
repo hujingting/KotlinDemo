@@ -189,4 +189,6 @@
     <color name="darkblue">#00008B</color> <!--暗蓝色 -->
     <color name="navy">#000080</color> <!--海军色 -->
 
+    <color name="red_ee2746">#ee2746</color><!-- 淡曙红 -->
+
 </resources>
