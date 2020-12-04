@@ -45,8 +45,8 @@ class BannerAdapter(context: Context) : BasicRecycleAdapter<Banner>(context) {
 
         Glide.with(mContext)
                 .load(banner.imagePath)
-                .placeholder(R.drawable.avatar_default)
-                .error(R.drawable.avatar_default)
+                .placeholder(R.drawable.no_content_image)
+                .error(R.drawable.no_content_image)
                 .into(viewHolder.itemView.iv_banner)
 
         viewHolder.itemView.setOnClickListener() {

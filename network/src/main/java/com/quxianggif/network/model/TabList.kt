@@ -17,7 +17,7 @@ class TabList : Response() {
     companion object {
         fun getResponse(callback: Callback) {
             GetTabListRequest()
-                    .setListener(callback)
+                    .listen(callback)
         }
     }
 }

@@ -9,9 +9,10 @@
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        app:tabSelectedTextColor="@color/qq_blue"
+        app:tabSelectedTextColor="@color/yellow"
         app:tabTextColor="@color/white"
-        android:background="@color/wechat_green"/>
+        app:tabMode="scrollable"
+        android:background="#58ae6b"/>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"

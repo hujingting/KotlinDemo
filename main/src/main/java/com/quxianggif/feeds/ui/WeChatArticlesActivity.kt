@@ -10,7 +10,7 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chad.library.adapter.base.animation.SlideInBottomAnimation
 import com.quxianggif.common.ui.BaseActivity
-import com.quxianggif.feeds.adapter.WeChatArticlesAdapter
+import com.quxianggif.feeds.adapter.MainArticlesAdapter
 import com.quxianggif.network.model.Callback
 import com.quxianggif.network.model.GetWechatArticles
 import com.quxianggif.network.model.Response
@@ -21,6 +21,7 @@ import com.quxianggif.R
 import com.quxianggif.common.ui.WebViewActivity
 import com.quxianggif.core.model.Articles
 import com.quxianggif.core.util.AndroidVersion
+import com.quxianggif.feeds.adapter.WeChatArticlesAdapter
 import kotlinx.android.synthetic.main.activity_wechat_article.*
 
 

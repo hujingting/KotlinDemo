@@ -57,6 +57,7 @@ import com.quxianggif.core.model.SearchItem
 import com.quxianggif.core.model.Articles
 import com.quxianggif.core.util.AndroidVersion
 import com.quxianggif.core.util.GlobalUtil
+import com.quxianggif.feeds.adapter.MainArticlesAdapter
 import com.quxianggif.feeds.adapter.WeChatArticlesAdapter
 import com.quxianggif.network.model.*
 import com.quxianggif.util.ResponseHandler

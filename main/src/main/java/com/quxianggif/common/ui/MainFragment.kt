@@ -10,7 +10,7 @@ import com.chad.library.adapter.base.listener.OnItemClickListener
 import com.chad.library.adapter.base.listener.OnLoadMoreListener
 import com.quxianggif.R
 import com.quxianggif.core.model.Articles
-import com.quxianggif.feeds.adapter.WeChatArticlesAdapter
+import com.quxianggif.feeds.adapter.MainArticlesAdapter
 import com.quxianggif.network.model.*
 import com.quxianggif.user.adapter.BannerAdapter
 import com.quxianggif.util.ResponseHandler
@@ -25,7 +25,7 @@ import kotlinx.android.synthetic.main.fragment_main_view.swipeRefresh
  */
 class MainFragment : BaseFragment() {
 
-    var adapter: WeChatArticlesAdapter? = null
+    var adapter: MainArticlesAdapter? = null
     var page = 0
     private var bannerAdapter: BannerAdapter? = null;
 //    private var adapter: MainBannerAdapter? = null
@@ -133,7 +133,7 @@ class MainFragment : BaseFragment() {
     private fun setRecyclerView() {
         val manager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         recycler_view.layoutManager = manager
-        adapter = WeChatArticlesAdapter(com.quxianggif.R.layout.item_wechat_articles)
+        adapter = MainArticlesAdapter(R.layout.item_wechat_articles)
         adapter!!.adapterAnimation = SlideInBottomAnimation()
         // 打开或关闭加载更多功能（默认为true）
         adapter!!.loadMoreModule.isEnableLoadMore = true

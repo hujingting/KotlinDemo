@@ -75,4 +75,10 @@ class Articles : Model() {
     @SerializedName("niceShareDate")
     var niceShareDate: String = ""
 
+    @SerializedName("desc")
+    var desc: String = ""
+
+    @SerializedName("envelopePic")
+    var envelopePic: String = ""
+
 }
