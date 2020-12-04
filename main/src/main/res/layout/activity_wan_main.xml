@@ -29,13 +29,15 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="#58ae6b">
 
             <TextView
                 android:id="@+id/tv_main_tab"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:textColor="@color/white"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:padding="10dp"
@@ -47,7 +49,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="@color/black_222222"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 android:padding="10dp"
                 android:text="公众号"/>
@@ -58,6 +60,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 android:padding="10dp"
                 android:text="项目"/>

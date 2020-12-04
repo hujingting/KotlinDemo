@@ -2,3 +2,4 @@
 
 ## License
 
+学习kotlin，参考郭霖老师的 giffun 项目

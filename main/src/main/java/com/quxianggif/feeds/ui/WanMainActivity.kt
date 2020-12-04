@@ -321,7 +321,7 @@ class WanMainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
                 projectFragment = it
                 transaction.add(R.id.fl_content, it, it.javaClass.simpleName)
             } else -> {
-
+                
             }
         }
 

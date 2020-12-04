@@ -12,7 +12,9 @@ import com.filebrowser.Utils.Utils
 
 import com.quxianggif.R
 import com.quxianggif.adapter.BasicRecycleAdapter
+import com.quxianggif.common.ui.WebViewActivity
 import com.quxianggif.core.model.WanUser
+import com.quxianggif.network.model.Banner
 import com.quxianggif.util.ScreenUtils
 import com.umeng.commonsdk.stateless.UMSLEnvelopeBuild
 import com.umeng.commonsdk.stateless.UMSLEnvelopeBuild.mContext
@@ -22,7 +24,7 @@ import kotlinx.android.synthetic.main.item_banner_list.view.*
  * author jingting
  * date : 2020-05-2911:04
  */
-class BannerAdapter(context: Context) : BasicRecycleAdapter<WanUser>(context) {
+class BannerAdapter(context: Context) : BasicRecycleAdapter<Banner>(context) {
 
     var screenWith = ScreenUtils.screenWidth
 
@@ -38,29 +40,24 @@ class BannerAdapter(context: Context) : BasicRecycleAdapter<WanUser>(context) {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val viewHolder = holder as WanMainViewHolder
 
-//        val wanUser = getItem(position)
+//        setItemWith(viewHolder.itemView.iv_banner)
+        val banner = getItem(position)
 
         Glide.with(mContext)
-                .load(headIconUrl[position])
-                .placeholder(R.drawable.avatar_default)
-                .error(R.drawable.avatar_default)
+                .load(banner.imagePath)
+                .placeholder(R.drawable.no_content_image)
+                .error(R.drawable.no_content_image)
                 .into(viewHolder.itemView.iv_banner)
 
-//        viewHolder.itemView.setOnClickListener {
-//            if (listener != null) {
-//                listener.click(position, wanUser)
-//            }
-//        }
-    }
-
-    override fun getItemCount(): Int {
-        return 6;
+        viewHolder.itemView.setOnClickListener() {
+            WebViewActivity.actionStart(mContext, banner.title, banner.url)
+        }
     }
 
     fun setItemWith(itemView: View) {
         val params = itemView.layoutParams
-        params.width = (screenWith - ScreenUtils.dip2px(30f))/ 2
-        params.height = params.width
+        params.width = screenWith - ScreenUtils.dip2px(30f)
+        params.height = params.width * 10 / 16
         itemView.layoutParams = params
     }
 

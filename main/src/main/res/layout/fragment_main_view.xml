@@ -6,16 +6,25 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-    <com.xuexiang.xui.widget.banner.recycler.BannerLayout
-        android:id="@+id/banner"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:bl_autoPlaying="true"
-        app:bl_centerScale="1.3"
-        app:bl_itemSpace="10dp"
-        app:bl_moveSpeed="1.8" />
+        android:layout_height="match_parent">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+<!--    <com.bigkoo.convenientbanner.ConvenientBanner-->
+<!--        xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--        android:id="@+id/convenientBanner"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="200dp"-->
+<!--        app:canLoop="true" />-->
 
 
 </LinearLayout>

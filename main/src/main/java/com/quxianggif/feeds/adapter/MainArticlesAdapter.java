@@ -19,14 +19,14 @@ import java.util.List;
  * author jingting
  * date : 2020-08-0714:50
  */
-public class WeChatArticlesAdapter extends BaseQuickAdapter<Articles, WeChatArticlesAdapter.WeChatArticleViewHolder> implements LoadMoreModule {
+public class MainArticlesAdapter extends BaseQuickAdapter<Articles, MainArticlesAdapter.WeChatArticleViewHolder> implements LoadMoreModule {
 
 
-    public WeChatArticlesAdapter(int layoutResId, @Nullable List<Articles> data) {
+    public MainArticlesAdapter(int layoutResId, @Nullable List<Articles> data) {
         super(layoutResId, data);
     }
 
-    public WeChatArticlesAdapter(int layoutResId) {
+    public MainArticlesAdapter(int layoutResId) {
         super(layoutResId);
     }
 
@@ -34,6 +34,12 @@ public class WeChatArticlesAdapter extends BaseQuickAdapter<Articles, WeChatArti
     @Override
     protected void convert(@NotNull WeChatArticleViewHolder holder, Articles articles) {
         holder.tvWechatTime.setText(articles.getNiceShareDate());
+
+        if (holder.getAdapterPosition() < 4) {
+            holder.tvTopTag.setVisibility(View.VISIBLE);
+        } else {
+            holder.tvTopTag.setVisibility(View.GONE);
+        }
 
         if (!TextUtils.isEmpty(articles.getAuthor())) {
             holder.tvWeChatAuthor.setText(articles.getAuthor());

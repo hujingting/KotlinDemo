@@ -20,17 +20,26 @@ package com.quxianggif.network.model
 import com.google.gson.annotations.SerializedName
 import com.quxianggif.core.model.Articles
 import com.quxianggif.core.model.WeChatArticlesMain
+import com.quxianggif.network.request.GetTopArticlesRequest
 import java.util.ArrayList
 
 /**
- * 获取系统推荐关注用户列表的请求的实体类封装。
+ * 获取安卓公众号历史文章
  *
  * @author guolin
  * @since 18/3/19
  */
-open class GetWechatArticlesBase : Response() {
+class GetTopArticles : Response() {
 
     @SerializedName("data")
-    var wechatArticelsMain: WeChatArticlesMain = WeChatArticlesMain()
+    var topArticles: MutableList<Articles> = ArrayList()
+
+    companion object {
+
+        fun getResponse(callback: Callback) {
+            GetTopArticlesRequest()
+                    .listen(callback)
+        }
+    }
 
 }

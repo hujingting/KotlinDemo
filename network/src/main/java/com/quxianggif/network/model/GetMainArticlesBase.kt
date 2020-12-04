@@ -18,9 +18,7 @@
 package com.quxianggif.network.model
 
 import com.google.gson.annotations.SerializedName
-import com.quxianggif.core.model.Articles
 import com.quxianggif.core.model.WeChatArticlesMain
-import java.util.ArrayList
 
 /**
  * 获取系统推荐关注用户列表的请求的实体类封装。
@@ -28,7 +26,7 @@ import java.util.ArrayList
  * @author guolin
  * @since 18/3/19
  */
-open class GetWechatArticlesBase : Response() {
+open class GetMainArticlesBase : Response() {
 
     @SerializedName("data")
     var wechatArticelsMain: WeChatArticlesMain = WeChatArticlesMain()

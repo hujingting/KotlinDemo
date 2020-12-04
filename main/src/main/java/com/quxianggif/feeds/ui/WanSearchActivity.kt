@@ -20,7 +20,6 @@ package com.quxianggif.feeds.ui
 import android.annotation.TargetApi
 import android.app.SharedElementCallback
 import android.content.Context
-import android.content.Intent
 import android.graphics.Point
 import android.os.Build
 import android.os.Bundle
@@ -55,9 +54,10 @@ import com.quxianggif.core.extension.logWarn
 import com.quxianggif.core.extension.postDelayed
 import com.quxianggif.core.extension.showToast
 import com.quxianggif.core.model.SearchItem
-import com.quxianggif.core.model.WeChatArticles
+import com.quxianggif.core.model.Articles
 import com.quxianggif.core.util.AndroidVersion
 import com.quxianggif.core.util.GlobalUtil
+import com.quxianggif.feeds.adapter.MainArticlesAdapter
 import com.quxianggif.feeds.adapter.WeChatArticlesAdapter
 import com.quxianggif.network.model.*
 import com.quxianggif.util.ResponseHandler
@@ -191,7 +191,7 @@ class WanSearchActivity : BaseActivity() {
 
 
         adapter.setOnItemClickListener(OnItemClickListener { adapter, view, position ->
-            val wechatArticles = adapter.getItem(position) as WeChatArticles
+            val wechatArticles = adapter.getItem(position) as Articles
             WebViewActivity.actionStart(this, wechatArticles.title, wechatArticles.link)
         })
 
@@ -249,7 +249,7 @@ class WanSearchActivity : BaseActivity() {
                         if (ResponseHandler.handleWanResponse(response)) {
                             val weChatAritcle = response as WanSearchArticles
                             val wechatArticlesMain = weChatAritcle.wechatArticelsMain
-                            val wechatArticles = wechatArticlesMain.weChatArticles
+                            val wechatArticles = wechatArticlesMain.articles
 
                             if (page == 1) {
 //                                adapter.data = wechatArticles as MutableList<WeChatArticles>
