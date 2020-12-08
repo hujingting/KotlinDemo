@@ -36,7 +36,7 @@ class ProjectFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        TabList.getResponse(object : Callback{
+        TabList.getResponse(object : Callback {
 
             override fun onResponse(response: Response) {
                 if (ResponseHandler.handleWanResponse(response)) {

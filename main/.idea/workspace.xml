@@ -11,26 +11,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6daa280f-39a4-4571-b472-66c85ede7596" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/quxianggif/feeds/adapter/MainArticlesAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/quxianggif/feeds/adapter/ProjectsAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/quxianggif/user/adapter/ProjectPagerAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_child_ui.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/layout/item_project_list.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../network/src/main/java/com/quxianggif/network/model/GetProjectList.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../network/src/main/java/com/quxianggif/network/request/GetProjectRequest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../core/src/main/java/com/quxianggif/core/model/Articles.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../core/src/main/java/com/quxianggif/core/model/Articles.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_1_1_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_resources_1_1_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_1_3_72_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_common_1_3_72_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quxianggif/common/ui/MainFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/quxianggif/common/ui/MainFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quxianggif/common/ui/ProjectChildFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/quxianggif/common/ui/ProjectChildFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/quxianggif/common/ui/ProjectFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/quxianggif/common/ui/ProjectFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quxianggif/feeds/adapter/WeChatArticlesAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/quxianggif/feeds/adapter/WeChatArticlesAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quxianggif/feeds/ui/WanSearchActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/quxianggif/feeds/ui/WanSearchActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quxianggif/feeds/ui/WeChatArticlesActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/quxianggif/feeds/ui/WeChatArticlesActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/quxianggif/user/adapter/BannerAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/quxianggif/user/adapter/BannerAdapter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_wan_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_wan_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_project_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_project_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../network/src/main/java/com/quxianggif/network/model/TabList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../network/src/main/java/com/quxianggif/network/model/TabList.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../opensource/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../opensource/src/main/res/values/colors.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -256,42 +243,26 @@
     <state width="457" height="466" key="DebuggerActiveHint/46.23.2002.1129@46.23.2002.1129" timestamp="1606894464865" />
     <state width="451" height="466" key="DebuggerActiveHint/48.23.2000.1129@48.23.2000.1129" timestamp="1606789516963" />
     <state width="455" height="466" key="DebuggerActiveHint/55.23.1993.1129@55.23.1993.1129" timestamp="1607062473829" />
-    <state width="1651" height="-25" key="GridCell.Tab.0.bottom" timestamp="1607070789919">
-      <screen x="55" y="23" width="1993" height="1129" />
-    </state>
     <state width="1676" height="122" key="GridCell.Tab.0.bottom/46.23.2002.1129@46.23.2002.1129" timestamp="1606894529377" />
     <state width="1717" height="126" key="GridCell.Tab.0.bottom/48.23.2000.1129@48.23.2000.1129" timestamp="1606792595684" />
     <state width="1715" height="194" key="GridCell.Tab.0.bottom/50.23.1998.1129@50.23.1998.1129" timestamp="1601349679698" />
     <state width="1807" height="124" key="GridCell.Tab.0.bottom/51.23.1997.1129@51.23.1997.1129" timestamp="1606457400824" />
     <state width="1813" height="13" key="GridCell.Tab.0.bottom/53.23.1995.1129@53.23.1995.1129" timestamp="1606382472463" />
-    <state width="1651" height="-25" key="GridCell.Tab.0.bottom/55.23.1993.1129@55.23.1993.1129" timestamp="1607070789919" />
-    <state width="1651" height="-25" key="GridCell.Tab.0.center" timestamp="1607070789918">
-      <screen x="55" y="23" width="1993" height="1129" />
-    </state>
     <state width="1676" height="122" key="GridCell.Tab.0.center/46.23.2002.1129@46.23.2002.1129" timestamp="1606894529377" />
     <state width="1717" height="126" key="GridCell.Tab.0.center/48.23.2000.1129@48.23.2000.1129" timestamp="1606792595684" />
     <state width="1715" height="194" key="GridCell.Tab.0.center/50.23.1998.1129@50.23.1998.1129" timestamp="1601349679697" />
     <state width="1807" height="124" key="GridCell.Tab.0.center/51.23.1997.1129@51.23.1997.1129" timestamp="1606457400823" />
     <state width="1813" height="13" key="GridCell.Tab.0.center/53.23.1995.1129@53.23.1995.1129" timestamp="1606382472462" />
-    <state width="1651" height="-25" key="GridCell.Tab.0.center/55.23.1993.1129@55.23.1993.1129" timestamp="1607070789918" />
-    <state width="1651" height="-25" key="GridCell.Tab.0.left" timestamp="1607070789918">
-      <screen x="55" y="23" width="1993" height="1129" />
-    </state>
     <state width="1676" height="122" key="GridCell.Tab.0.left/46.23.2002.1129@46.23.2002.1129" timestamp="1606894529377" />
     <state width="1717" height="126" key="GridCell.Tab.0.left/48.23.2000.1129@48.23.2000.1129" timestamp="1606792595683" />
     <state width="1715" height="194" key="GridCell.Tab.0.left/50.23.1998.1129@50.23.1998.1129" timestamp="1601349679697" />
     <state width="1807" height="124" key="GridCell.Tab.0.left/51.23.1997.1129@51.23.1997.1129" timestamp="1606457400823" />
     <state width="1813" height="13" key="GridCell.Tab.0.left/53.23.1995.1129@53.23.1995.1129" timestamp="1606382472462" />
-    <state width="1651" height="-25" key="GridCell.Tab.0.left/55.23.1993.1129@55.23.1993.1129" timestamp="1607070789918" />
-    <state width="1651" height="-25" key="GridCell.Tab.0.right" timestamp="1607070789919">
-      <screen x="55" y="23" width="1993" height="1129" />
-    </state>
     <state width="1676" height="122" key="GridCell.Tab.0.right/46.23.2002.1129@46.23.2002.1129" timestamp="1606894529377" />
     <state width="1717" height="126" key="GridCell.Tab.0.right/48.23.2000.1129@48.23.2000.1129" timestamp="1606792595684" />
     <state width="1715" height="194" key="GridCell.Tab.0.right/50.23.1998.1129@50.23.1998.1129" timestamp="1601349679698" />
     <state width="1807" height="124" key="GridCell.Tab.0.right/51.23.1997.1129@51.23.1997.1129" timestamp="1606457400823" />
     <state width="1813" height="13" key="GridCell.Tab.0.right/53.23.1995.1129@53.23.1995.1129" timestamp="1606382472462" />
-    <state width="1651" height="-25" key="GridCell.Tab.0.right/55.23.1993.1129@55.23.1993.1129" timestamp="1607070789919" />
     <state width="1651" height="122" key="GridCell.Tab.1.bottom" timestamp="1607062866040">
       <screen x="55" y="23" width="1993" height="1129" />
     </state>
@@ -348,7 +319,7 @@
     <state x="653" y="359" width="765" height="486" key="find.popup/51.23.1997.1129@51.23.1997.1129" timestamp="1606446354350" />
     <state x="654" y="359" width="764" height="486" key="find.popup/53.23.1995.1129@53.23.1995.1129" timestamp="1606382917929" />
     <state x="656" y="359" width="765" height="486" key="find.popup/55.23.1993.1129@55.23.1993.1129" timestamp="1607064086136" />
-    <state x="666" y="329" width="670" height="676" key="search.everywhere.popup" timestamp="1607075227294">
+    <state x="666" y="329" width="670" height="676" key="search.everywhere.popup" timestamp="1607419167166">
       <screen x="55" y="23" width="1993" height="1129" />
     </state>
     <state x="660" y="329" width="672" height="676" key="search.everywhere.popup/46.23.2002.1129@46.23.2002.1129" timestamp="1606899410476" />
@@ -356,7 +327,7 @@
     <state x="662" y="329" width="670" height="676" key="search.everywhere.popup/50.23.1998.1129@50.23.1998.1129" timestamp="1601349740187" />
     <state x="663" y="329" width="671" height="676" key="search.everywhere.popup/51.23.1997.1129@51.23.1997.1129" timestamp="1606469530577" />
     <state x="664" y="329" width="670" height="676" key="search.everywhere.popup/53.23.1995.1129@53.23.1995.1129" timestamp="1606382691829" />
-    <state x="666" y="329" width="670" height="676" key="search.everywhere.popup/55.23.1993.1129@55.23.1993.1129" timestamp="1607075227294" />
+    <state x="666" y="329" width="670" height="676" key="search.everywhere.popup/55.23.1993.1129@55.23.1993.1129" timestamp="1607419167166" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
