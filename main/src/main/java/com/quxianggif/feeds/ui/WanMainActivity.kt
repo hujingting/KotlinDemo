@@ -3,7 +3,10 @@ package com.quxianggif.feeds.ui
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.TextUtils
 import android.view.MenuItem
 import android.view.View
@@ -35,6 +38,12 @@ import com.quxianggif.user.ui.UserHomePageActivity
 import com.quxianggif.util.ColorUtils
 import com.quxianggif.util.UserUtil
 import com.quxianggif.util.glide.CustomUrl
+import com.skydoves.androidbottombar.BottomMenuItem
+import com.skydoves.androidbottombar.OnMenuItemSelectedListener
+import com.skydoves.androidbottombar.animations.BadgeAnimation
+import com.skydoves.androidbottombar.forms.badgeForm
+import com.skydoves.androidbottombar.forms.iconForm
+import com.skydoves.androidbottombar.forms.titleForm
 import jp.wasabeef.glide.transformations.BlurTransformation
 import jp.wasabeef.glide.transformations.CropCircleTransformation
 import kotlinx.android.synthetic.main.activity_wan_main.*
@@ -111,13 +120,60 @@ class WanMainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_wan_main)
 
-
         if (mIndex == -1) {
             switchFragment(0)
         } else {
             switchFragment(mIndex)
         }
+
+        setBottomBarView();
+
     }
+
+    private fun setBottomBarView() {
+
+        val titleForm = titleForm(this) {
+            setTitleColor(Color.WHITE)
+            setTitleActiveColorRes(R.color.white)
+        }
+
+        val iconForm = iconForm(this) {
+            setIconSize(28)
+        }
+
+        bottomBarView.addBottomMenuItems(
+                listOf(
+                        BottomMenuItem(this)
+                                .setTitleForm(titleForm)
+                                .setIconForm(iconForm)
+                                .setTitle("发现")
+                                .setIcon(R.drawable.icon_find_tab)
+                                .build(),
+
+                        BottomMenuItem(this)
+                                .setTitleForm(titleForm)
+                                .setIconForm(iconForm)
+                                .setTitle("公众号")
+                                .setIcon(R.drawable.icon_articles_tab)
+                                .build(),
+
+                        BottomMenuItem(this)
+                                .setTitleForm(titleForm)
+                                .setIconForm(iconForm)
+                                .setTitle("项目")
+                                .setIcon(R.drawable.icon_project_tab)
+                                .build()
+                )
+        )
+
+        bottomBarView.onMenuItemSelectedListener = object : OnMenuItemSelectedListener {
+            override fun onMenuItemSelected(index: Int, bottomMenuItem: BottomMenuItem, fromUser: Boolean) {
+//                bottomBarView.dismissBadge(index)
+                switchFragment(index)
+            }
+        }
+    }
+
 
     @SuppressLint("MissingSuperCall")
     override fun onSaveInstanceState(outState: Bundle) {
