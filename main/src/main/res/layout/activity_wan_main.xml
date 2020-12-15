@@ -20,16 +20,31 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-
         <FrameLayout
             android:id="@+id/fl_content"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"/>
 
+        <com.skydoves.androidbottombar.AndroidBottomBarView
+            android:id="@+id/bottomBarView"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/colorPrimary"
+            app:bottomBar_duration="300"
+            app:bottomBar_flavor="icon"
+            app:bottomBar_indicator_color="@color/colorPrimary"
+            app:bottomBar_indicator_height="4dp"
+            app:bottomBar_indicator_padding="6dp"
+            app:bottomBar_indicator_radius="12dp"
+            app:bottomBar_indicator_visible="true"
+            app:bottomBar_menuAnimation="overshoot"
+            app:bottomBar_selectedIndex="0"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:background="#58ae6b">
 
             <TextView
