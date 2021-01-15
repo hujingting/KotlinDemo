@@ -326,13 +326,13 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)
         } else {
-            val now = System.currentTimeMillis()
-            if (now - backPressTime > 2000) {
-                showToast(String.format(GlobalUtil.getString(R.string.press_again_to_exit), GlobalUtil.appName))
-                backPressTime = now
-            } else {
+//            val now = System.currentTimeMillis()
+//            if (now - backPressTime > 2000) {
+//                showToast(String.format(GlobalUtil.getString(R.string.press_again_to_exit), GlobalUtil.appName))
+//                backPressTime = now
+//            } else {
                 super.onBackPressed()
-            }
+//            }
         }
     }
 
