@@ -33,8 +33,8 @@ class CustomLayout(context: Context) : ViewGroup(context) {
     val fab = FloatingActionButton(context).apply {
         setImageResource(R.drawable.follow_button)
         layoutParams = LayoutParams(WRAP_CONTENT, WRAP_CONTENT).also {
-            (it as MarginLayoutParams).leftMargin = 12.dp
-//            marginEnd = 12.dp
+//            (it as MarginLayoutParams).leftMargin = 12.dp
+            it.marginEnd = 12.dp
         }
 
         addView(this)
@@ -81,6 +81,8 @@ class CustomLayout(context: Context) : ViewGroup(context) {
             else-> layoutParams.width.toExactlyMeasureSpec()
         }
     }
+
+    protected class LayoutParams(width:Int, height:Int) : MarginLayoutParams(width, height)
 
     protected fun Int.toExactlyMeasureSpec(): Int {
         return MeasureSpec.makeMeasureSpec(this, MeasureSpec.EXACTLY)
