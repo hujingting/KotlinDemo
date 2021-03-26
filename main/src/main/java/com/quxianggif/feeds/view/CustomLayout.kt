@@ -9,8 +9,6 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.ImageView
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
-import androidx.core.view.marginEnd
-import androidx.core.view.marginLeft
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.quxianggif.R
 
@@ -33,12 +31,13 @@ class CustomLayout(context: Context) : ViewGroup(context) {
     val fab = FloatingActionButton(context).apply {
         setImageResource(R.drawable.follow_button)
         layoutParams = LayoutParams(WRAP_CONTENT, WRAP_CONTENT).also {
-//            (it as MarginLayoutParams).leftMargin = 12.dp
+            (it as MarginLayoutParams).marginEnd = 12.dp
             it.marginEnd = 12.dp
         }
 
         addView(this)
     }
+
 
     val title = AppCompatTextView(context).apply {
         setText("test")
@@ -58,8 +57,8 @@ class CustomLayout(context: Context) : ViewGroup(context) {
 
     protected fun View.autoMeasure() {
         measure(
-                this.defaultWidthMeasureSpec(this as ViewGroup),
-                this.defaultHeightMeasureSpec(this as ViewGroup)
+                this.defaultWidthMeasureSpec(this@CustomLayout),
+                this.defaultHeightMeasureSpec(this@CustomLayout)
         )
     }
 
@@ -74,11 +73,11 @@ class CustomLayout(context: Context) : ViewGroup(context) {
     }
 
     protected fun View.defaultHeightMeasureSpec(viewGroup: ViewGroup): Int {
-        return when(layoutParams.width) {
+        return when(layoutParams.height) {
             ViewGroup.LayoutParams.MATCH_PARENT -> viewGroup.measuredWidth.toExactlyMeasureSpec()
             ViewGroup.LayoutParams.WRAP_CONTENT -> ViewGroup.LayoutParams.WRAP_CONTENT.toAtMostMeasureSpec()
             0 -> throw IllegalAccessException("Need special treatment for $this")
-            else-> layoutParams.width.toExactlyMeasureSpec()
+            else-> layoutParams.height.toExactlyMeasureSpec()
         }
     }
 
