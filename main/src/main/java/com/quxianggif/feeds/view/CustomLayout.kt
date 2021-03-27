@@ -16,9 +16,7 @@ import com.quxianggif.R
  * author jingting
  * date : 2021/3/24下午4:08
  */
-class CustomLayout(context: Context) : ViewGroup(context) {
-
-    protected val Int.dp:Int get() = (this * resources.displayMetrics.density + 0.5f).toInt()
+public class CustomLayout(context: Context) : BaseCustomLayout(context) {
 
     val header = AppCompatImageView(context).apply {
         scaleType = ImageView.ScaleType.CENTER_CROP;
@@ -55,43 +53,7 @@ class CustomLayout(context: Context) : ViewGroup(context) {
         title.autoMeasure()
     }
 
-    protected fun View.autoMeasure() {
-        measure(
-                this.defaultWidthMeasureSpec(this@CustomLayout),
-                this.defaultHeightMeasureSpec(this@CustomLayout)
-        )
-    }
-
-
-    protected fun View.defaultWidthMeasureSpec(viewGroup: ViewGroup): Int {
-        return when(layoutParams.width) {
-            ViewGroup.LayoutParams.MATCH_PARENT -> viewGroup.measuredWidth.toExactlyMeasureSpec()
-            ViewGroup.LayoutParams.WRAP_CONTENT -> ViewGroup.LayoutParams.WRAP_CONTENT.toAtMostMeasureSpec()
-            0 -> throw IllegalAccessException("Need special treatment for $this")
-            else-> layoutParams.width.toExactlyMeasureSpec()
-        }
-    }
-
-    protected fun View.defaultHeightMeasureSpec(viewGroup: ViewGroup): Int {
-        return when(layoutParams.height) {
-            ViewGroup.LayoutParams.MATCH_PARENT -> viewGroup.measuredWidth.toExactlyMeasureSpec()
-            ViewGroup.LayoutParams.WRAP_CONTENT -> ViewGroup.LayoutParams.WRAP_CONTENT.toAtMostMeasureSpec()
-            0 -> throw IllegalAccessException("Need special treatment for $this")
-            else-> layoutParams.height.toExactlyMeasureSpec()
-        }
-    }
-
-    protected class LayoutParams(width:Int, height:Int) : MarginLayoutParams(width, height)
-
-    protected fun Int.toExactlyMeasureSpec(): Int {
-        return MeasureSpec.makeMeasureSpec(this, MeasureSpec.EXACTLY)
-    }
-
-    protected fun Int.toAtMostMeasureSpec(): Int {
-        return MeasureSpec.makeMeasureSpec(this, MeasureSpec.AT_MOST)
-    }
-
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
-
+        header.layout(0,0)
     }
 }
