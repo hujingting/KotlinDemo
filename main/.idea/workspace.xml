@@ -11,12 +11,12 @@
     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6daa280f-39a4-4571-b472-66c85ede7596" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/quxianggif/feeds/view/CustomLayout.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_annotation_annotation_1_1_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_1_0_aar.xml" beforeDir="false" />
+    <list default="true" id="6daa280f-39a4-4571-b472-66c85ede7596" name="Default Changelist" comment="o">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_common_2_1_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_1_0_aar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/quxianggif/user/adapter/WanMainAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/quxianggif/user/adapter/WanMainAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/quxianggif/util/glide/ProgressResponseBody.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/quxianggif/util/glide/ProgressResponseBody.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +87,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="com.quxianggif.feeds.view" />
       <recent name="com.quxianggif.network.model" />
       <recent name="com.quxianggif.network.request" />
       <recent name="com.quxianggif.user.adapter" />
@@ -225,35 +226,38 @@
       <screen x="51" y="23" width="1997" height="1129" />
     </state>
     <state x="515" y="357" key="#PSD/51.23.1997.1129@51.23.1997.1129" timestamp="1616664434314" />
-    <state x="517" y="357" key="#PSD/54.23.1994.1129@54.23.1994.1129" timestamp="1608021076045" />
     <state x="772" y="329" key="#com.intellij.ide.util.MemberChooser" timestamp="1616573341768">
       <screen x="53" y="23" width="1995" height="1129" />
     </state>
     <state x="772" y="329" key="#com.intellij.ide.util.MemberChooser/53.23.1995.1129@53.23.1995.1129" timestamp="1616573341768" />
-    <state width="1642" height="91" key="GridCell.Tab.0.bottom" timestamp="1616658317769">
-      <screen x="51" y="23" width="1997" height="1129" />
+    <state x="619" y="242" key="CommitChangelistDialog2" timestamp="1617173840283">
+      <screen x="55" y="23" width="1993" height="1129" />
+    </state>
+    <state x="619" y="242" key="CommitChangelistDialog2/55.23.1993.1129@55.23.1993.1129" timestamp="1617173840283" />
+    <state width="1642" height="91" key="GridCell.Tab.0.bottom" timestamp="1617243555830">
+      <screen x="54" y="23" width="1994" height="1129" />
     </state>
     <state width="1642" height="91" key="GridCell.Tab.0.bottom/51.23.1997.1129@51.23.1997.1129" timestamp="1616658317769" />
     <state width="851" height="58" key="GridCell.Tab.0.bottom/53.23.1995.1129@53.23.1995.1129" timestamp="1612516709061" />
-    <state width="1695" height="54" key="GridCell.Tab.0.bottom/54.23.1994.1129@54.23.1994.1129" timestamp="1608020985433" />
-    <state width="1642" height="91" key="GridCell.Tab.0.center" timestamp="1616658317769">
-      <screen x="51" y="23" width="1997" height="1129" />
+    <state width="1642" height="91" key="GridCell.Tab.0.bottom/54.23.1994.1129@54.23.1994.1129" timestamp="1617243555830" />
+    <state width="1642" height="91" key="GridCell.Tab.0.center" timestamp="1617243555830">
+      <screen x="54" y="23" width="1994" height="1129" />
     </state>
     <state width="1642" height="91" key="GridCell.Tab.0.center/51.23.1997.1129@51.23.1997.1129" timestamp="1616658317769" />
     <state width="851" height="58" key="GridCell.Tab.0.center/53.23.1995.1129@53.23.1995.1129" timestamp="1612516709060" />
-    <state width="1695" height="54" key="GridCell.Tab.0.center/54.23.1994.1129@54.23.1994.1129" timestamp="1608020985432" />
-    <state width="1642" height="91" key="GridCell.Tab.0.left" timestamp="1616658317768">
-      <screen x="51" y="23" width="1997" height="1129" />
+    <state width="1642" height="91" key="GridCell.Tab.0.center/54.23.1994.1129@54.23.1994.1129" timestamp="1617243555830" />
+    <state width="1642" height="91" key="GridCell.Tab.0.left" timestamp="1617243555829">
+      <screen x="54" y="23" width="1994" height="1129" />
     </state>
     <state width="1642" height="91" key="GridCell.Tab.0.left/51.23.1997.1129@51.23.1997.1129" timestamp="1616658317768" />
     <state width="851" height="58" key="GridCell.Tab.0.left/53.23.1995.1129@53.23.1995.1129" timestamp="1612516709059" />
-    <state width="1695" height="54" key="GridCell.Tab.0.left/54.23.1994.1129@54.23.1994.1129" timestamp="1608020985432" />
-    <state width="1642" height="91" key="GridCell.Tab.0.right" timestamp="1616658317769">
-      <screen x="51" y="23" width="1997" height="1129" />
+    <state width="1642" height="91" key="GridCell.Tab.0.left/54.23.1994.1129@54.23.1994.1129" timestamp="1617243555829" />
+    <state width="1642" height="91" key="GridCell.Tab.0.right" timestamp="1617243555830">
+      <screen x="54" y="23" width="1994" height="1129" />
     </state>
     <state width="1642" height="91" key="GridCell.Tab.0.right/51.23.1997.1129@51.23.1997.1129" timestamp="1616658317769" />
     <state width="851" height="58" key="GridCell.Tab.0.right/53.23.1995.1129@53.23.1995.1129" timestamp="1612516709060" />
-    <state width="1695" height="54" key="GridCell.Tab.0.right/54.23.1994.1129@54.23.1994.1129" timestamp="1608020985433" />
+    <state width="1642" height="91" key="GridCell.Tab.0.right/54.23.1994.1129@54.23.1994.1129" timestamp="1617243555830" />
     <state x="528" y="213" key="SettingsEditor" timestamp="1616665166768">
       <screen x="51" y="23" width="1997" height="1129" />
     </state>
@@ -262,22 +266,24 @@
       <screen x="51" y="23" width="1997" height="1129" />
     </state>
     <state width="544" height="445" key="SwitcherDM/51.23.1997.1129@51.23.1997.1129" timestamp="1616664255095" />
-    <state width="543" height="445" key="SwitcherDM/53.23.1995.1129@53.23.1995.1129" timestamp="1608089151510" />
-    <state x="653" y="359" width="767" height="486" key="find.popup" timestamp="1616659399304">
-      <screen x="51" y="23" width="1997" height="1129" />
+    <state x="656" y="359" width="766" height="486" key="find.popup" timestamp="1617175097772">
+      <screen x="55" y="23" width="1993" height="1129" />
     </state>
     <state x="651" y="359" width="767" height="486" key="find.popup/48.23.2000.1129@48.23.2000.1129" timestamp="1608776364645" />
     <state x="652" y="359" width="767" height="486" key="find.popup/50.23.1998.1129@50.23.1998.1129" timestamp="1614245483341" />
     <state x="653" y="359" width="767" height="486" key="find.popup/51.23.1997.1129@51.23.1997.1129" timestamp="1616659399304" />
     <state x="654" y="359" width="767" height="486" key="find.popup/53.23.1995.1129@53.23.1995.1129" timestamp="1616656371478" />
-    <state x="664" y="329" width="670" height="676" key="search.everywhere.popup" timestamp="1616652659140">
-      <screen x="53" y="23" width="1995" height="1129" />
+    <state x="655" y="359" width="766" height="486" key="find.popup/54.23.1994.1129@54.23.1994.1129" timestamp="1617095920184" />
+    <state x="656" y="359" width="766" height="486" key="find.popup/55.23.1993.1129@55.23.1993.1129" timestamp="1617175097772" />
+    <state x="665" y="329" width="671" height="676" key="search.everywhere.popup" timestamp="1617246728646">
+      <screen x="54" y="23" width="1994" height="1129" />
     </state>
     <state x="660" y="329" width="672" height="676" key="search.everywhere.popup/46.23.2002.1129@46.23.2002.1129" timestamp="1610698563561" />
-    <state x="662" y="329" width="672" height="676" key="search.everywhere.popup/50.23.1998.1129@50.23.1998.1129" timestamp="1614245520617" />
+    <state x="662" y="329" width="672" height="676" key="search.everywhere.popup/50.23.1998.1129@50.23.1998.1129" timestamp="1616831141635" />
     <state x="663" y="329" width="672" height="676" key="search.everywhere.popup/51.23.1997.1129@51.23.1997.1129" timestamp="1615881850980" />
     <state x="664" y="329" width="670" height="676" key="search.everywhere.popup/53.23.1995.1129@53.23.1995.1129" timestamp="1616652659140" />
-    <state x="665" y="329" width="671" height="676" key="search.everywhere.popup/54.23.1994.1129@54.23.1994.1129" timestamp="1608021181036" />
+    <state x="665" y="329" width="671" height="676" key="search.everywhere.popup/54.23.1994.1129@54.23.1994.1129" timestamp="1617246728646" />
+    <state x="666" y="329" width="671" height="676" key="search.everywhere.popup/55.23.1993.1129@55.23.1993.1129" timestamp="1617175090835" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

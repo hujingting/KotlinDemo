@@ -21,11 +21,8 @@ import java.io.IOException
 
 import okhttp3.MediaType
 import okhttp3.ResponseBody
-import okio.Buffer
-import okio.BufferedSource
-import okio.ForwardingSource
-import okio.Okio
-import okio.Source
+import okio.*
+import kotlin.jvm.Throws
 
 /**
  * 自定义用于计算Glide网络请求下载进度的ResponseBody。
@@ -52,7 +49,7 @@ internal class ProgressResponseBody(url: String, private val responseBody: Respo
 
     override fun source(): BufferedSource {
         if (bufferedSource == null) {
-            bufferedSource = Okio.buffer(ProgressSource(responseBody.source()))
+            bufferedSource = ProgressSource(responseBody.source()).buffer()
         }
         return bufferedSource!!
     }

@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import coil.load
 import com.bumptech.glide.Glide
-import com.filebrowser.Utils.Utils
 
 import com.quxianggif.R
 import com.quxianggif.adapter.BasicRecycleAdapter
@@ -40,11 +40,16 @@ class WanMainAdapter(context: Context) : BasicRecycleAdapter<WanUser>(context) {
 
         setItemWith(viewHolder.wanHeadIcon)
 
-        Glide.with(mContext)
-                .load(headIconUrl[position])
-                .placeholder(R.drawable.avatar_default)
-                .error(R.drawable.avatar_default)
-                .into(holder.wanHeadIcon)
+//        Glide.with(mContext)
+//                .load(headIconUrl[position])
+//                .placeholder(R.drawable.avatar_default)
+//                .error(R.drawable.avatar_default)
+//                .into(holder.wanHeadIcon)
+
+        holder.wanHeadIcon.load(headIconUrl[position]) {
+            placeholder(R.drawable.avatar_default)
+            error(R.drawable.avatar_default)
+        }
 
         viewHolder.itemView.setOnClickListener {
             if (listener != null) {
