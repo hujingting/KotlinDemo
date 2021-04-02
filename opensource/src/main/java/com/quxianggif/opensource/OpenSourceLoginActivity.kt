@@ -116,6 +116,7 @@ class OpenSourceLoginActivity : LoginActivity() {
             if (isLogin) return@setOnClickListener
             val number = phoneNumberEdit.text.toString()
             val code = verifyCodeEdit.text.toString()
+
             if (number.isEmpty() || code.isEmpty()) {
                 showToast(GlobalUtil.getString(R.string.phone_number_or_code_is_empty))
                 return@setOnClickListener
@@ -128,6 +129,8 @@ class OpenSourceLoginActivity : LoginActivity() {
             processLogin(number, code)
         }
     }
+
+
 
     override fun onDestroy() {
         super.onDestroy()

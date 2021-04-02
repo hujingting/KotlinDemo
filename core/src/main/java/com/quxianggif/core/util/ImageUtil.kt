@@ -150,6 +150,7 @@ object ImageUtil {
                 cursor.moveToFirst()
                 val id = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Images.Media._ID))
                 uri = Uri.parse("content://media/external/images/media/$id")
+
                 logDebug("image id is $id")
             } else {
                 uri = context.contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
