@@ -19,6 +19,7 @@ object TestInstance {
 
     var number: Int = 6
 
+
     fun method(){
         println("test")
     }
