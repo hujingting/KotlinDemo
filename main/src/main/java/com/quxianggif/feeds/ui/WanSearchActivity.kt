@@ -180,7 +180,7 @@ class WanSearchActivity : BaseActivity() {
         // 是否自动加载下一页（默认为true）
         adapter.loadMoreModule.isAutoLoadMore = true
         //预加载的位置（默认为1）
-//        adapter.loadMoreModule.preLoadNumber = 3
+//        adapterChina.loadMoreModule.preLoadNumber = 3
 
         adapter.loadMoreModule.setOnLoadMoreListener(OnLoadMoreListener {
             page += 1
@@ -252,7 +252,7 @@ class WanSearchActivity : BaseActivity() {
                             val wechatArticles = wechatArticlesMain.articles
 
                             if (page == 1) {
-//                                adapter.data = wechatArticles as MutableList<WeChatArticles>
+//                                adapterChina.data = wechatArticles as MutableList<WeChatArticles>
                                 adapter.setList(wechatArticles)
                                 loadFinished()
                             } else if (page >= wechatArticlesMain.total){
@@ -274,7 +274,7 @@ class WanSearchActivity : BaseActivity() {
 
     private fun clearResults() {
         runAutoTransition()
-//        adapter.clear()
+//        adapterChina.clear()
         searchResults.visibility = View.INVISIBLE
         loading?.visibility = View.GONE
         hideNoContentView()

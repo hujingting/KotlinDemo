@@ -28,7 +28,7 @@ class MainFragment : BaseFragment() {
     var adapter: MainArticlesAdapter? = null
     var page = 0
     private var bannerAdapter: BannerAdapter? = null;
-//    private var adapter: MainBannerAdapter? = null
+//    private var adapterChina: MainBannerAdapter? = null
 
     internal lateinit var view: View
     internal lateinit var banner: BannerLayout
@@ -140,7 +140,7 @@ class MainFragment : BaseFragment() {
         // 是否自动加载下一页（默认为true）
         adapter!!.loadMoreModule.isAutoLoadMore = true
         //预加载的位置（默认为1）
-//        adapter.loadMoreModule.preLoadNumber = 3
+//        adapterChina.loadMoreModule.preLoadNumber = 3
 
         adapter!!.loadMoreModule.setOnLoadMoreListener(OnLoadMoreListener {
             page += 1
@@ -173,7 +173,7 @@ class MainFragment : BaseFragment() {
 
     private fun setupViewPager() {
 //        banner.apply {
-//            adapter = MainBannerAdapter()
+//            adapterChina = MainBannerAdapter()
 //            setAutoPlay(true)
 ////            setLifecycleRegistry(lifecycle)
 //            setIndicatorStyle(IndicatorStyle.ROUND_RECT)

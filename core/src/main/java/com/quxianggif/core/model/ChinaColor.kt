@@ -1,6 +1,7 @@
 package com.quxianggif.core.model
 
 import com.google.gson.annotations.SerializedName
+import com.quxianggif.core.R
 
 /**
  * author jingting
@@ -9,10 +10,12 @@ import com.google.gson.annotations.SerializedName
 
 
 
-class Color(override val modelId: Long) : Model() {
+class ChinaColor(override val modelId: Long) : Model() {
 
     var name : String = ""
 
     var color: String = ""
+
+    var img: Int = 0
 
 }

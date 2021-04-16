@@ -6,5 +6,5 @@ package com.quxianggif.core.model
  */
 class ColorList(override val modelId: Long) : Model() {
 
-    var data : MutableList<Color> = arrayListOf()
+    var data : MutableList<ChinaColor> = arrayListOf()
 }

@@ -8,14 +8,35 @@
         android:id="@+id/iv_wallpaper"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scaleType="centerCrop"
         android:background="#96c24e"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_colors"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"/>
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
 
-    
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_colors"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_wall_papers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_wallpaper_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:textColor="@color/black_222222"
+        android:textSize="20sp"
+        android:layout_gravity="end"
+        android:text="设置"/>
 
 </FrameLayout>

@@ -126,7 +126,7 @@ class WeChatArticlesActivity: BaseActivity() {
         // 是否自动加载下一页（默认为true）
         adapter.loadMoreModule.isAutoLoadMore = true
         //预加载的位置（默认为1）
-//        adapter.loadMoreModule.preLoadNumber = 3
+//        adapterChina.loadMoreModule.preLoadNumber = 3
 
         adapter.loadMoreModule.setOnLoadMoreListener(OnLoadMoreListener {
             page += 1

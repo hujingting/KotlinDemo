@@ -1,5 +1,6 @@
 package com.quxianggif.user.adapter;
 
+import android.content.res.Resources;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
@@ -9,7 +10,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.module.LoadMoreModule;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.quxianggif.R;
-import com.quxianggif.core.model.Color;
+import com.quxianggif.core.model.ChinaColor;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -22,25 +23,31 @@ import androidx.annotation.NonNull;
  * author jingting
  * date : 2021/4/15下午4:47
  */
-public class ColorAdapter extends BaseQuickAdapter<Color, ColorAdapter.ColorViewHolder> implements LoadMoreModule {
+public class SmartisanWallpaperAdapter extends BaseQuickAdapter<ChinaColor, SmartisanWallpaperAdapter.ColorViewHolder> implements LoadMoreModule {
 
 
-    public ColorAdapter(int layoutResId, @Nullable List<Color> data) {
+    public SmartisanWallpaperAdapter(int layoutResId, @Nullable List<ChinaColor> data) {
         super(layoutResId, data);
     }
 
-    public ColorAdapter(int layoutResId) {
+    public SmartisanWallpaperAdapter(int layoutResId) {
         super(layoutResId);
     }
 
     @Override
-    protected void convert(@NotNull ColorViewHolder colorViewHolder, Color color) {
-        String colorString = color.getColor();
+    protected void convert(@NotNull ColorViewHolder colorViewHolder, ChinaColor chinaColor) {
+        int colorString = chinaColor.getImg();
 
-        if (!TextUtils.isEmpty(colorString)) {
-            colorViewHolder.ivColorItem.setBackgroundColor(android.graphics.Color.parseColor(colorString));
-            colorViewHolder.tvColorItem.setText(color.getName());
+        if (colorString != 0) {
+            int drawableRes = getDrawableRes(colorString);
+            colorViewHolder.ivColorItem.setImageResource(drawableRes);
+            colorViewHolder.tvColorItem.setText(chinaColor.getName());
         }
+    }
+
+    public int getDrawableRes(int colorInt) {
+        Resources res = getContext().getResources();
+        return res.getIdentifier("smartisan_wallpaper_" + colorInt, "drawable", getContext().getPackageName());
     }
 
     static class ColorViewHolder extends BaseViewHolder {
