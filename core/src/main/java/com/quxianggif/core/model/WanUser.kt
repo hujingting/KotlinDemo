@@ -17,6 +17,4 @@ class WanUser : Model() {
     var name : String = ""
 
     var userControlSetTop = false
-
-
 }

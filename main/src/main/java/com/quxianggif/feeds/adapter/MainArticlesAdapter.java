@@ -43,9 +43,10 @@ public class MainArticlesAdapter extends BaseQuickAdapter<Articles, MainArticles
 
         if (!TextUtils.isEmpty(articles.getAuthor())) {
             holder.tvWeChatAuthor.setText(articles.getAuthor());
-        } else if (!TextUtils.isEmpty(articles.getShareUser())){
+        } else if (!TextUtils.isEmpty(articles.getShareUser())) {
             holder.tvWeChatAuthor.setText(articles.getShareUser());
         }
+
         holder.tvWeChatTitle.setText(articles.getTitle());
 
     }

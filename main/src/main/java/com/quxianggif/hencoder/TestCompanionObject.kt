@@ -19,6 +19,7 @@ package com.quxianggif.hencoder
 class TestCompanionObject {
 
     companion object Test {
+
         var c: Int = 1
 
         //kotlin 中声明常量

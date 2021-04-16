@@ -212,6 +212,7 @@ class WanMainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
             R.id.recommend_following -> GifFun.getHandler().postDelayed(300) { RecommendFollowingActivity.actionStart(this) }
             R.id.settings -> GifFun.getHandler().postDelayed(300) { SettingsActivity.actionStart(this) }
             R.id.wan_android -> GifFun.getHandler().postDelayed(300) { MainActivity.actionStart(this) }
+            R.id.relaxingWallpaper -> GifFun.getHandler().postDelayed(300) {WallPagerActivity.actionStart(this)}
         }
 
         GifFun.getHandler().post {

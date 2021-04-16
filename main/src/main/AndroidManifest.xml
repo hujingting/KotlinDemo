@@ -110,6 +110,10 @@
 
         <activity android:name=".feeds.ui.WanSearchActivity"
             android:theme="@style/GifFun.SearchActivity"/>
+        <activity android:name=".feeds.ui.WallPagerActivity"
+            android:label="故宫颜色"
+            android:theme="@style/CustomColorFullScreen"
+            android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="com.quxianggif.util.glide.GifFunModule"
