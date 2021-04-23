@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1161029175/WanAndroid.iml" filepath="$PROJECT_DIR$/.idea/modules/-1161029175/WanAndroid.iml" group="WanAndroid" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/664706085/core.iml" filepath="$PROJECT_DIR$/.idea/modules/664706085/core.iml" group="WanAndroid/core" />
-      <module fileurl="file://$PROJECT_DIR$/main.iml" filepath="$PROJECT_DIR$/main.iml" group="WanAndroid/main" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-946415640/network.iml" filepath="$PROJECT_DIR$/.idea/modules/-946415640/network.iml" group="WanAndroid/network" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-764469525/opensource.iml" filepath="$PROJECT_DIR$/.idea/modules/-764469525/opensource.iml" group="WanAndroid/opensource" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1161029175/WanAndroid.iml" filepath="$PROJECT_DIR$/.idea/modules/-1161029175/WanAndroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/664706085/WanAndroid.core.iml" filepath="$PROJECT_DIR$/.idea/modules/664706085/WanAndroid.core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/WanAndroid.main.iml" filepath="$PROJECT_DIR$/.idea/modules/WanAndroid.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-946415640/WanAndroid.network.iml" filepath="$PROJECT_DIR$/.idea/modules/-946415640/WanAndroid.network.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-764469525/WanAndroid.opensource.iml" filepath="$PROJECT_DIR$/.idea/modules/-764469525/WanAndroid.opensource.iml" />
     </modules>
   </component>
 </project>
