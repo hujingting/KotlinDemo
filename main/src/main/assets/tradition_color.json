@@ -1,0 +1,575 @@
+{
+  "red": [
+
+    {
+      "name": "牡丹粉红",
+      "color": "#eea2a4"
+    },
+
+    {
+      "name": "香叶红",
+      "color": "#f07c82"
+    },
+
+    {
+      "name": "艳红",
+      "color": "#ed5a65"
+    },
+
+    {
+      "name": "玉红",
+      "color": "#c04851"
+    },
+
+    {
+      "name": "茶花红",
+      "color": "#ee3f4d"
+    },
+
+    {
+      "name": "高粱红",
+      "color": "#c02c38"
+    },
+
+    {
+      "name": "满江红",
+      "color": "#a7535a"
+    },
+
+    {
+      "name": "鼠鼻红",
+      "color": "#e3b4b8"
+    },
+
+    {
+      "name": "合欢红",
+      "color": "#f0a1a8"
+    },
+
+    {
+      "name": "春梅红",
+      "color": "#f1939c"
+    },
+
+    {
+      "name": "苋菜红",
+      "color": "#a61b29"
+    },
+
+    {
+      "name": "烟红",
+      "color": "#894e54"
+    },
+
+    {
+      "name": "莓红",
+      "color": "#c45a65"
+    },
+
+    {
+      "name": "鹅冠红",
+      "color": "#d11a2d"
+    },
+
+    {
+      "name": "枫叶红",
+      "color": "#c21f30"
+    },
+
+    {
+      "name": "唐菖蒲红",
+      "color": "#de1c31"
+    },
+
+    {
+      "name": "枣红",
+      "color": "#7c1823"
+    },
+
+    {
+      "name": "暗紫苑红",
+      "color": "#82202b"
+    },
+
+    {
+      "name": "殷红",
+      "color": "#82111f"
+    },
+
+    {
+      "name": "草茉莉红",
+      "color": "#ef475d"
+    },
+
+    {
+      "name": "山茶红",
+      "color": "#ed556a"
+    },
+
+    {
+      "name": "海棠红",
+      "color": "#f03752"
+    },
+
+    {
+      "name": "蓟粉红",
+      "color": "#e6d2d5"
+    },
+
+    {
+      "name": "石蕊红",
+      "color": "#f0c9cf"
+    },
+
+    {
+      "name": "淡曙红",
+      "color": "#ee2746"
+    },
+
+    {
+      "name": "石竹红",
+      "color": "#ee4863"
+    },
+
+    {
+      "name": "淡茜红",
+      "color": "#e77c8e"
+    },
+
+    {
+      "name": "山黎豆红",
+      "color": "#c27c88"
+    },
+
+    {
+      "name": "淡蕊香红",
+      "color": "#ee4866"
+    },
+
+    {
+      "name": "月季红",
+      "color": "#ce5777"
+    },
+
+    {
+      "name": "尖晶玉红",
+      "color": "#cc163a"
+    },
+
+    {
+      "name": "水红",
+      "color": "#f1c4cd"
+    },
+
+    {
+      "name": "姜红",
+      "color": "#eeb8c3"
+    },
+
+    {
+      "name": "吊钟花红",
+      "color": "#2d0c13"
+    },
+
+    {
+      "name": "锦葵红",
+      "color": "#bf3553"
+    },
+
+    {
+      "name": "粉团花红",
+      "color": "#ec9bad"
+    },
+
+    {
+      "name": "晶红",
+      "color": "#eea6b7"
+    },
+
+    {
+      "name": "芍药耕红",
+      "color": "#eba0b3"
+    },
+
+    {
+      "name": "豇豆红",
+      "color": "#ed9db2"
+    },
+
+    {
+      "name": "报春红",
+      "color": "#ec8aa4"
+    },
+
+    {
+      "name": "淡绛红",
+      "color": "#ec7696"
+    },
+
+    {
+      "name": "凤仙花红",
+      "color": "#ea7293"
+    },
+
+    {
+      "name": "霞光红",
+      "color": "#ef82a0"
+    },
+
+    {
+      "name": "喜蛋红",
+      "color": "#ec2c64"
+    },
+
+    {
+      "name": "夹竹桃红",
+      "color": "#eb507e"
+    },
+
+    {
+      "name": "松叶牡丹红",
+      "color": "#eb3c70"
+    },
+
+    {
+      "name": "莲瓣红",
+      "color": "#ea517f"
+    },
+
+    {
+      "name": "白芨红",
+      "color": "#de7897"
+    },
+
+    {
+      "name": "酢酱草红",
+      "color": "#c5708b"
+    },
+
+    {
+      "name": "品红",
+      "color": "#ef3473"
+    },
+
+    {
+      "name": "初荷红",
+      "color": "#e16c96"
+    },
+
+    {
+      "name": "葡萄酒红",
+      "color": "#62102e"
+    },
+
+    {
+      "name": "菠根红",
+      "color": "#d13c74"
+    },
+
+    {
+      "name": "兔眼红",
+      "color": "#ec4e8a"
+    },
+
+    {
+      "name": "嫩菱红",
+      "color": "#de3f7c"
+    },
+
+    {
+      "name": "紫荆红",
+      "color": "#ee2c79"
+    },
+
+    {
+      "name": "扁豆花红",
+      "color": "#ef498b"
+    },
+
+    {
+      "name": "藏花红",
+      "color": "#ec2d7a"
+    },
+
+    {
+      "name": "丹紫红",
+      "color": "#d2568c"
+    },
+
+    {
+      "name": "玫瑰红",
+      "color": "#d2357d"
+    },
+
+    {
+      "name": "菱锰红",
+      "color": "#d276a3"
+    },
+
+    {
+      "name": "龙须红",
+      "color": "#cc5595"
+    },
+
+    {
+      "name": "电气石红",
+      "color": "#c35691"
+    },
+
+    {
+      "name": "陶瓷红",
+      "color": "#e16723"
+    },
+
+    {
+      "name": "菠萝红",
+      "color": "#fc7930"
+    },
+
+    {
+      "name": "余烬红",
+      "color": "#cf7543"
+    },
+
+    {
+      "name": "火砖红",
+      "color": "#cd6227"
+    },
+
+    {
+      "name": "初桃粉红",
+      "color": "#f6dcce"
+    },
+
+    {
+      "name": "介壳淡粉红",
+      "color": "#f7cfba"
+    },
+
+    {
+      "name": "蟹壳红",
+      "color": "#f27635"
+    },
+
+    {
+      "name": "燕颔红",
+      "color": "#fc6315"
+    },
+
+    {
+      "name": "晨曦红",
+      "color": "#ea8958"
+    },
+
+    {
+      "name": "玉粉红",
+      "color": "#e8b49a"
+    },
+
+    {
+      "name": "野蔷薇红",
+      "color": "#fb9968"
+    },
+
+    {
+      "name": "莓酱红",
+      "color": "#fa5d19"
+    },
+
+    {
+      "name": "绀红",
+      "color": "#aa6a4c"
+    },
+
+    {
+      "name": "瓜瓤红",
+      "color": "#f68c60"
+    },
+
+    {
+      "name": "淡藏花红",
+      "color": "#f6ad8f"
+    },
+
+    {
+      "name": "润红",
+      "color": "#f7cdbc"
+    },
+
+    {
+      "name": "龙睛鱼红",
+      "color": "#ef632b"
+    },
+
+    {
+      "name": "芙蓉红",
+      "color": "#f9723d"
+    },
+
+    {
+      "name": "落霞红",
+      "color": "#cf4813"
+    },
+
+    {
+      "name": "法螺红",
+      "color": "#cf4813"
+    },
+
+    {
+      "name": "草珠红",
+      "color": "#f8ebe6"
+    },
+
+    {
+      "name": "蟹蝥红",
+      "color": "#b14b28"
+    },
+
+    {
+      "name": "淡桃红",
+      "color": "#f6cec1"
+    },
+
+    {
+      "name": "草莓红",
+      "color": "#ef6f48"
+    },
+
+    {
+      "name": "洋水仙红",
+      "color": "#f4c7ba"
+    },
+
+    {
+      "name": "朱红",
+      "color": "#ed5126"
+    },
+
+    {
+      "name": "榴花红",
+      "color": "#f34718"
+    },
+
+    {
+      "name": "柿红",
+      "color": "#f2481b"
+    },
+
+    {
+      "name": "淡罂粟红",
+      "color": "#eea08c"
+    },
+
+    {
+      "name": "大红",
+      "color": "#f04b22"
+    },
+
+    {
+      "name": "蜻蜓红",
+      "color": "#f1441d"
+    },
+
+    {
+      "name": "颊红",
+      "color": "#eeaa9c"
+    },
+
+    {
+      "name": "桃红",
+      "color": "#f0ada0"
+    },
+
+    {
+      "name": "铁水红",
+      "color": "#f5391c"
+    },
+
+    {
+      "name": "胭脂红",
+      "color": "#f03f24"
+    },
+
+    {
+      "name": "极光红",
+      "color": "#f33b1f"
+    },
+
+    {
+      "name": "红汞红",
+      "color": "#f23e23"
+    },
+
+    {
+      "name": "萝卜红",
+      "color": "#f13c22"
+    },
+
+    {
+      "name": "曲红",
+      "color": "#f05a46"
+    },
+
+    {
+      "name": "谷鞘红",
+      "color": "#f17666"
+    },
+
+    {
+      "name": "苹果红",
+      "color": "#f15642"
+    },
+
+    {
+      "name": "桂红",
+      "color": "#f25a47"
+    },
+
+    {
+      "name": "樱桃红",
+      "color": "#ed3321"
+    },
+
+    {
+      "name": "珊瑚红",
+      "color": "#f04a3a"
+    },
+
+    {
+      "name": "鹤顶红",
+      "color": "#d42517"
+    },
+
+    {
+      "name": "舌红",
+      "color": "#f19790"
+    },
+
+    {
+      "name": "覆盆子红",
+      "color": "#ac1f18"
+    },
+
+    {
+      "name": "榴子红",
+      "color": "#f1908c"
+    },
+
+    {
+      "name": "秋海棠红",
+      "color": "#ec2b24"
+    },
+
+    {
+      "name": "枸枢红",
+      "color": "#ed3333"
+    },
+
+    {
+      "name": "淡菽红",
+      "color": "#ed4845"
+    }
+  ]
+
+}

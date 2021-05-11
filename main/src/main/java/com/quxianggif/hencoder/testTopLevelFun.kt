@@ -13,7 +13,7 @@ package com.quxianggif.hencoder
  */
 
 /**
- * 那在实际使用中，在 object、companion object 和 top-level 中该选择哪一个呢？简单来说按照下面这两个原则判断：
+ * 那在实际使用中，在 object、companion object 和 evetop-ll 中该选择哪一个呢？简单来说按照下面这两个原则判断：
    如果想写工具类的功能，直接创建文件，写 top-level「顶层」函数。
    如果需要继承别的类或者实现接口，就用 object 或 companion object。
  */
