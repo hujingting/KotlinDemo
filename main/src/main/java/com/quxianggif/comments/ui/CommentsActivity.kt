@@ -53,6 +53,7 @@ import com.quxianggif.util.ResponseHandler
 import com.quxianggif.util.UserUtil
 import com.quxianggif.util.glide.CustomUrl
 import com.umeng.analytics.MobclickAgent
+import com.zhpan.bannerview.transform.toDp
 import jp.wasabeef.glide.transformations.CropCircleTransformation
 import kotlinx.android.synthetic.main.activity_comments.*
 import org.greenrobot.eventbus.EventBus
