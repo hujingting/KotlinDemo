@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
 /**
@@ -40,6 +41,16 @@ open class BaseVmFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
         //observe一定要在初始化最后，因为observe会收到黏性事件，随后对ui做处理
         observe()
+    }
+
+    /**
+     * 通过activity获取viewModel，跟随activity生命周期
+     */
+    protected fun <T : ViewModel?> getActivityViewModel(modelClass: Class<T>): T {
+        if (activityProvider == null) {
+            activityProvider = ViewModelProvider(mActivity)
+        }
+        return activityProvider!!.get(modelClass)
     }
 
     /**

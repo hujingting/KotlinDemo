@@ -3,6 +3,7 @@ package com.zs.zs_jetpack.ui.main.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.quxianggif.network.model.Banner
 import com.quxianggif.ui.base.BaseViewModel
 import com.zs.base_library.base.BaseViewModel
 import com.zs.zs_jetpack.bean.ArticleListBean
@@ -33,12 +34,12 @@ class HomeVM : BaseViewModel() {
     /**
      * banner
      */
-    private val _banner = MutableLiveData<MutableList<BannerBean>>()
+    private val _banner = MutableLiveData<MutableList<Banner>>()
 
     /**
      * 对外部提供只读的LiveData
      */
-    val banner: LiveData<MutableList<BannerBean>> = _banner
+    val banner: LiveData<MutableList<Banner>> = _banner
 
     /**
      * 获取banner

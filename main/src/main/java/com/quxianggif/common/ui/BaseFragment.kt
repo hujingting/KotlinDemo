@@ -37,7 +37,7 @@ import java.util.*
  * @author guolin
  * @since 17/3/20
  */
-open class BaseFragment : Fragment(), RequestLifecycle {
+open class BaseFragment : BaseVmFragment(), RequestLifecycle {
 
     private var mListener: PermissionListener? = null
 
