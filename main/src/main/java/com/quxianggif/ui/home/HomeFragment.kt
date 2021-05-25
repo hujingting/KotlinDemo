@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import cn.bingoogolapple.bgabanner.BGABanner
 import com.chad.library.adapter.base.animation.SlideInBottomAnimation
 import com.chad.library.adapter.base.listener.OnItemClickListener
 import com.chad.library.adapter.base.listener.OnLoadMoreListener
@@ -14,13 +15,12 @@ import com.quxianggif.R
 import com.quxianggif.common.ui.BaseFragment
 import com.quxianggif.common.ui.WebViewActivity
 import com.quxianggif.core.model.Articles
+import com.quxianggif.ext.loadUrl
 import com.quxianggif.feeds.adapter.MainArticlesAdapter
 import com.quxianggif.network.model.*
 import com.quxianggif.user.adapter.BannerAdapter
 import com.quxianggif.util.ResponseHandler
 import com.quxianggif.util.ScreenUtils
-import com.xuexiang.xui.widget.banner.recycler.BannerLayout
-import com.zs.zs_jetpack.ui.main.home.BannerBean
 import com.zs.zs_jetpack.ui.main.home.HomeVM
 import kotlinx.android.synthetic.main.fragment_main_view.*
 
@@ -28,7 +28,7 @@ import kotlinx.android.synthetic.main.fragment_main_view.*
  * author jingting
  * date : 2020/11/25下午3:33
  */
-class HomeFragment : BaseFragment() {
+class HomeFragment : BaseFragment(), BGABanner.Adapter<ImageView?, String?>, BGABanner.Delegate<ImageView?, String?> {
 
     var adapter: MainArticlesAdapter? = null
     var page = 0
@@ -38,7 +38,7 @@ class HomeFragment : BaseFragment() {
     var bannerList: MutableList<Banner>? = null
 
     internal lateinit var view: View
-    internal lateinit var banner: BannerLayout
+    internal lateinit var banner: BGABanner
     var topArticleList: List<Articles> = ArrayList()
 
 
@@ -51,24 +51,44 @@ class HomeFragment : BaseFragment() {
 
 
     override fun observe() {
-        homeVm?.banner?.observe(this, Observer {
-            bannerList = it
+//        homeVm?.banner?.observe(this, Observer {
+//            bannerList = it
+//            initBanner()
+//
+//        })
+    }
 
-            banner.apply {
-                setAutoPlaying(true)
-                val views : MutableList<View> = ArrayList()
-                bannerList?.forEach {
-                    views.add(ImageView(mActivity).apply {
-                        setBackgroundResource(R.drawable.ripple_bg)
-                    })
-                }
-
-                setAdapter(this@HomeFragment)
-                setDelegate(this@HomeFragment)
-                setData(views)
+    private fun initBanner() {
+        banner.apply {
+            setAutoPlayAble(true)
+            val views : MutableList<View> = ArrayList()
+            bannerList?.forEach {
+                views.add(ImageView(mActivity).apply {
+                    setBackgroundResource(R.drawable.ripple_bg)
+                })
             }
 
-        })
+            setAdapter(this@HomeFragment)
+            setDelegate(this@HomeFragment)
+            setData(views)
+        }
+    }
+
+    override fun fillBannerItem(banner: BGABanner?, itemView: ImageView?, model: String?, position: Int) {
+        itemView?.apply {
+            scaleType = ImageView.ScaleType.CENTER_CROP
+            bannerList?.get(position)?.imagePath?.let { loadUrl(mActivity, it) }
+        }
+    }
+
+    override fun onBannerItemClick(banner: BGABanner?, itemView: ImageView?, model: String?, position: Int) {
+//        nav().navigate(R.id.action_main_fragment_to_web_fragment, Bundle().apply {
+//            bannerList?.get(position)?.let {
+//                putString("loadUrl", it.url)
+//                putString("title", it.title)
+//                putInt("id", it.id)
+//            }
+//        })
     }
 
     override fun initViewModel() {
@@ -77,7 +97,7 @@ class HomeFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         view = inflater.inflate(R.layout.head_view_banner, null)
-        banner = view.findViewById<BannerLayout>(R.id.banner)
+        banner = view.findViewById<BGABanner>(R.id.banner)
         return super.onCreateView(inflater.inflate(R.layout.fragment_main_view, container, false));
     }
 
@@ -89,7 +109,7 @@ class HomeFragment : BaseFragment() {
 
         setItemWith(banner)
         bannerAdapter = activity?.let { BannerAdapter(it) }
-        banner.setAdapter(bannerAdapter)
+//        banner.setAdapter(bannerAdapter)
 
         BannerModel.getResponse(object : Callback {
             override fun onResponse(response: Response) {
@@ -98,6 +118,8 @@ class HomeFragment : BaseFragment() {
                     val wanUsers = bannerModel.data
                     bannerAdapter?.data = wanUsers
 //                    banner.refreshData(wanuser)
+                    bannerList = bannerModel.data
+                    initBanner()
                 }
             }
 
@@ -197,5 +219,6 @@ class HomeFragment : BaseFragment() {
         params.height = params.width * 718 / 1146
         itemView.layoutParams = params
     }
+
 
 }

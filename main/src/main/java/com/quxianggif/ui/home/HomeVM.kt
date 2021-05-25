@@ -5,11 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.quxianggif.network.model.Banner
 import com.quxianggif.ui.base.BaseViewModel
-import com.zs.base_library.base.BaseViewModel
-import com.zs.zs_jetpack.bean.ArticleListBean
-import com.zs.zs_jetpack.common.BasePageVM
-import com.zs.zs_jetpack.ui.common.CollectRequest
-import kotlinx.coroutines.async
 
 /**
  * des 首页
@@ -18,7 +13,7 @@ import kotlinx.coroutines.async
  */
 class HomeVM : BaseViewModel() {
 
-    private val repo by lazy { HomeRepo() }
+//    private val repo by lazy { HomeRepo() }
 //    private val collectRequest by lazy {
 //        CollectRequest(_articleList) }
     /**
@@ -46,7 +41,7 @@ class HomeVM : BaseViewModel() {
      */
     fun getBanner() {
         launch {
-            _banner.value = repo.getBanner()
+//            _banner.value = repo.getBanner()
         }
     }
 
