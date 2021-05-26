@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 //apply plugin: 'kotlin-kapt'
 //apply plugin: 'com.android.library'
 //apply plugin: 'com.jakewharton.butterknife'
@@ -12,6 +11,10 @@ android {
     defaultConfig {
         minSdkVersion MIN_SDK_VERSION as int
         targetSdkVersion TARGET_SDK_VERSION as int
+    }
+
+    viewBinding {
+        enabled = true
     }
 
     buildTypes {
@@ -36,10 +39,6 @@ android {
         enabled = true
     }
 
-}
-
-androidExtensions {
-    experimental = true
 }
 
 dependencies {
@@ -92,8 +91,5 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 }
 
-buildscript {
-    dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.4'
-    }
-}
+
+
