@@ -2,8 +2,11 @@ package com.quxianggif.common.ui
 
 import android.content.Context
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
@@ -37,11 +40,44 @@ open class BaseVmFragment : Fragment(){
 //        ParamUtil.initParam(this)
     }
 
+    override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
+    ): View? {
+        getLayoutId()?.let {
+//            setStatusColor()
+//            setSystemInvadeBlack()
+            //获取ViewDataBinding
+            val binding: ViewDataBinding =
+                    DataBindingUtil.inflate(inflater, it, container, false)
+            //将ViewDataBinding生命周期与Fragment绑定
+            binding.lifecycleOwner = viewLifecycleOwner
+//            dataBindingConfig = getDataBindingConfig()
+//            dataBindingConfig?.apply {
+//                val bindingParams = bindingParams
+//                // 将bindingParams逐个加入到ViewDataBinding中的Variable
+//                // 这一步很重要,否则xml中拿不到variable中内容
+//                for (i in 0 until bindingParams.size()) {
+//                    binding.setVariable(bindingParams.keyAt(i), bindingParams.valueAt(i))
+//                }
+//            }
+            mBinding = binding
+            return binding.root
+        }
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
+    private fun getLayoutId(): Int {
+        return 0
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //observe一定要在初始化最后，因为observe会收到黏性事件，随后对ui做处理
         observe()
     }
+
 
     /**
      * 通过activity获取viewModel，跟随activity生命周期
