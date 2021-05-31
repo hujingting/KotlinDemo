@@ -11,6 +11,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.quxianggif.ui.base.DataBindingConfig
 
 /**
  * author jingting
@@ -18,7 +19,7 @@ import androidx.lifecycle.ViewModelProvider
  *
  * mvvm 基础 fragment
  */
-open class BaseVmFragment : Fragment(){
+abstract class BaseVmFragment : Fragment(){
 
     /**
      * 开放给外部使用
@@ -27,7 +28,7 @@ open class BaseVmFragment : Fragment(){
     lateinit var mActivity: AppCompatActivity
     private var fragmentProvider: ViewModelProvider? = null
     private var activityProvider: ViewModelProvider? = null
-//    private var dataBindingConfig: DataBindingConfig? = null
+    private var dataBindingConfig: DataBindingConfig? = null
     private var mBinding: ViewDataBinding? = null
 
     override fun onAttach(context: Context) {
@@ -53,24 +54,22 @@ open class BaseVmFragment : Fragment(){
                     DataBindingUtil.inflate(inflater, it, container, false)
             //将ViewDataBinding生命周期与Fragment绑定
             binding.lifecycleOwner = viewLifecycleOwner
-//            dataBindingConfig = getDataBindingConfig()
-//            dataBindingConfig?.apply {
-//                val bindingParams = bindingParams
-//                // 将bindingParams逐个加入到ViewDataBinding中的Variable
-//                // 这一步很重要,否则xml中拿不到variable中内容
-//                for (i in 0 until bindingParams.size()) {
-//                    binding.setVariable(bindingParams.keyAt(i), bindingParams.valueAt(i))
-//                }
-//            }
+            dataBindingConfig = getDataBindingConfig()
+            dataBindingConfig?.apply {
+                val bindingParams = bindingParams
+                // 将bindingParams逐个加入到ViewDataBinding中的Variable
+                // 这一步很重要,否则xml中拿不到variable中内容
+                for (i in 0 until bindingParams.size()) {
+                    binding.setVariable(bindingParams.keyAt(i), bindingParams.valueAt(i))
+                }
+            }
             mBinding = binding
             return binding.root
         }
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
-    private fun getLayoutId(): Int {
-        return 0
-    }
+    abstract fun getLayoutId(): Int?
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -104,5 +103,10 @@ open class BaseVmFragment : Fragment(){
     open fun observe() {
 
     }
+
+    /**
+     * 获取dataBinding配置项
+     */
+    abstract fun getDataBindingConfig(): DataBindingConfig?
 
 }

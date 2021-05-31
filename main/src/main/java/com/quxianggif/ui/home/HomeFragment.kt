@@ -18,6 +18,8 @@ import com.quxianggif.core.model.Articles
 import com.quxianggif.ext.loadUrl
 import com.quxianggif.feeds.adapter.MainArticlesAdapter
 import com.quxianggif.network.model.*
+import com.quxianggif.ui.base.DataBindingConfig
+import com.quxianggif.ui.config.BR
 import com.quxianggif.user.adapter.BannerAdapter
 import com.quxianggif.util.ResponseHandler
 import com.quxianggif.util.ScreenUtils
@@ -57,6 +59,7 @@ class HomeFragment : BaseFragment(), BGABanner.Adapter<ImageView?, String?>, BGA
 //
 //        })
     }
+
 
     private fun initBanner() {
         banner.apply {
@@ -101,6 +104,16 @@ class HomeFragment : BaseFragment(), BGABanner.Adapter<ImageView?, String?>, BGA
         return super.onCreateView(inflater.inflate(R.layout.fragment_main_view, container, false));
     }
 
+    override fun getDataBindingConfig(): DataBindingConfig? {
+        return DataBindingConfig(R.layout.fragment_main_view, homeVm)
+                .addBindingParam(BR.vm, homeVm)
+    }
+
+
+    override fun getLayoutId(): Int? {
+        return R.layout.fragment_main_view
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -127,7 +140,6 @@ class HomeFragment : BaseFragment(), BGABanner.Adapter<ImageView?, String?>, BGA
 
             }
         })
-
 
         swipeRefresh.setOnRefreshListener {
             page = 0
