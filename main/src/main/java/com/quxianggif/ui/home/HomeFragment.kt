@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import cn.bingoogolapple.bgabanner.BGABanner
 import com.chad.library.adapter.base.animation.SlideInBottomAnimation
@@ -15,6 +14,7 @@ import com.quxianggif.R
 import com.quxianggif.common.ui.BaseFragment
 import com.quxianggif.common.ui.WebViewActivity
 import com.quxianggif.core.model.Articles
+import com.quxianggif.databinding.FragmentMainViewBinding
 import com.quxianggif.ext.loadUrl
 import com.quxianggif.feeds.adapter.MainArticlesAdapter
 import com.quxianggif.network.model.*
@@ -24,7 +24,6 @@ import com.quxianggif.user.adapter.BannerAdapter
 import com.quxianggif.util.ResponseHandler
 import com.quxianggif.util.ScreenUtils
 import com.zs.zs_jetpack.ui.main.home.HomeVM
-import kotlinx.android.synthetic.main.fragment_main_view.*
 
 /**
  * author jingting
@@ -42,7 +41,7 @@ class HomeFragment : BaseFragment(), BGABanner.Adapter<ImageView?, String?>, BGA
     internal lateinit var view: View
     internal lateinit var banner: BGABanner
     var topArticleList: List<Articles> = ArrayList()
-
+    lateinit var binding: FragmentMainViewBinding
 
     companion object {
 
@@ -101,7 +100,8 @@ class HomeFragment : BaseFragment(), BGABanner.Adapter<ImageView?, String?>, BGA
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         view = inflater.inflate(R.layout.head_view_banner, null)
         banner = view.findViewById<BGABanner>(R.id.banner)
-        return super.onCreateView(inflater.inflate(R.layout.fragment_main_view, container, false));
+        binding = FragmentMainViewBinding.inflate(inflater)
+        return binding.root;
     }
 
     override fun getDataBindingConfig(): DataBindingConfig? {
@@ -117,7 +117,7 @@ class HomeFragment : BaseFragment(), BGABanner.Adapter<ImageView?, String?>, BGA
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        swipeRefresh.isRefreshing = true
+        binding.swipeRefresh.isRefreshing = true
         setRecyclerView()
 
         setItemWith(banner)
@@ -141,7 +141,7 @@ class HomeFragment : BaseFragment(), BGABanner.Adapter<ImageView?, String?>, BGA
             }
         })
 
-        swipeRefresh.setOnRefreshListener {
+        binding.swipeRefresh.setOnRefreshListener {
             page = 0
             loadData(page)
         }
@@ -180,7 +180,7 @@ class HomeFragment : BaseFragment(), BGABanner.Adapter<ImageView?, String?>, BGA
                             articleList.addAll(0, topArticleList)
                         }
                         adapter?.setList(articleList)
-                        swipeRefresh.isRefreshing = false
+                        binding.swipeRefresh.isRefreshing = false
                     } else if (page >= articlesMain.total){
                         adapter?.loadMoreModule?.loadMoreEnd()
                     } else{
@@ -193,14 +193,14 @@ class HomeFragment : BaseFragment(), BGABanner.Adapter<ImageView?, String?>, BGA
 
             override fun onFailure(e: Exception) {
                 adapter?.loadMoreModule?.loadMoreFail()
-                swipeRefresh.isRefreshing = false
+                binding.swipeRefresh.isRefreshing = false
             }
         })
     }
 
     private fun setRecyclerView() {
         val manager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-        recycler_view.layoutManager = manager
+        binding.recyclerView.layoutManager = manager
         adapter = MainArticlesAdapter(R.layout.item_wechat_articles)
         adapter!!.adapterAnimation = SlideInBottomAnimation()
         // 打开或关闭加载更多功能（默认为true）
@@ -216,7 +216,7 @@ class HomeFragment : BaseFragment(), BGABanner.Adapter<ImageView?, String?>, BGA
         })
 
         adapter?.addHeaderView(view)
-        recycler_view.adapter = adapter
+        binding.recyclerView.adapter = adapter
 
         adapter!!.setOnItemClickListener(OnItemClickListener { adapter, view, position ->
             val wechatArticles = adapter.getItem(position) as Articles
