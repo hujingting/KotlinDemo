@@ -32,6 +32,7 @@ import com.quxianggif.core.util.GlobalUtil
 import com.quxianggif.event.MessageEvent
 import com.quxianggif.event.ModifyUserInfoEvent
 import com.quxianggif.settings.ui.SettingsActivity
+import com.quxianggif.ui.home.HomeFragment
 import com.quxianggif.user.ui.ModifyUserInfoActivity
 import com.quxianggif.user.ui.RecommendFollowingActivity
 import com.quxianggif.user.ui.UserHomePageActivity
@@ -65,7 +66,7 @@ class WanMainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
 
     private lateinit var editImage: ImageView
 
-    private var mainFragment: MainFragment? = null
+    private var mainFragment: HomeFragment? = null
     private var articlesFragment: ArticlesFragment? = null;
     private var projectFragment: ProjectFragment? = null;
 
@@ -358,7 +359,7 @@ class WanMainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
             //首页
             0 -> mainFragment?.let {
                 transaction.show(it)
-            } ?: MainFragment.newInstance().let {
+            } ?: HomeFragment.newInstance().let {
                 mainFragment = it
                 transaction.add(R.id.fl_content, it, it.javaClass.simpleName)
             }

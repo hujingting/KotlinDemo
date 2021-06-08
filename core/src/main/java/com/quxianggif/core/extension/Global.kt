@@ -51,6 +51,19 @@ fun showToast(content: String, duration: Int = Toast.LENGTH_SHORT) {
     }
 }
 
+//@SuppressLint("showLongToast")
+//@JvmOverloads
+//fun showLongToast(content: String, duration: Int = Toast.LENGTH_LONG) {
+//    if (Looper.myLooper() == Looper.getMainLooper()) {
+//        if (toast == null) {
+//            toast = Toast.makeText(GifFun.getContext(), content, duration)
+//        } else {
+//            toast?.setText(content)
+//        }
+//        toast?.show()
+//    }
+//}
+
 /**
  * 切换到主线程后弹出Toast信息。此方法不管是在子线程还是主线程中，都可以成功弹出Toast信息。
  *

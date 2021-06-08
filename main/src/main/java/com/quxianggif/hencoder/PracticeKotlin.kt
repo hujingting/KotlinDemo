@@ -1,4 +1,4 @@
-package com.quxianggif.feeds.ui
+package com.quxianggif.hencoder
 
 import android.content.res.Resources
 import android.util.TypedValue

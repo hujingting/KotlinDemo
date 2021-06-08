@@ -55,6 +55,7 @@ import com.quxianggif.core.extension.*
 import com.quxianggif.core.util.AndroidVersion
 import com.quxianggif.core.util.GlobalUtil
 import com.quxianggif.core.util.SharedUtil
+import com.quxianggif.databinding.ActivityMainBinding
 import com.quxianggif.event.MessageEvent
 import com.quxianggif.event.ModifyUserInfoEvent
 import com.quxianggif.settings.ui.SettingsActivity
@@ -140,17 +141,24 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         }
     }
 
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val rootview = binding.root
+
         checkIsNeedToRefresh()
         initDatabase()
-        setContentView(R.layout.activity_main)
+        setContentView(rootview)
     }
 
     override fun setupViews() {
         setupToolbar()
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_menu)
-        setupViewPager(viewpager)
+        setupViewPager(binding.viewpager)
         tabs.setupWithViewPager(viewpager)
         tabs.addOnTabSelectedListener(tabSelectedListener)
         composeFab.setOnClickListener {
